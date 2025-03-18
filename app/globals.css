@@ -1,1 +1,154 @@
 @import "tailwindcss";
+
+/* Custom tailwind theme extensions */
+@theme {
+  /* Fonts */
+
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Merriweather", serif;
+  --font-display: "Playfair Display", serif;
+  --font-handwriting: "Kalam", cursive;
+  --font-futuristic: "Orbitron", sans-serif;
+  --font-bold: "Oswald", sans-serif;
+
+  /* Colours */
+
+  --color-white-50: #fdfcfb;
+  --color-white-100: #faf9f6;
+  --color-white-200: #f2f1eb;
+  --color-white-300: #e8e6df;
+  --color-white-400: #dcd8cf;
+  --color-white-500: #cfc9bf;
+  --color-white-600: #bfb8ab;
+  --color-white-700: #afa699;
+  --color-white-800: #9e9588;
+  --color-white-900: #8e8377;
+
+  --color-green-50: #e5f0e8;
+  --color-green-100: #c9ddcd;
+  --color-green-200: #a1b5a8;
+  --color-green-300: #7f9585;
+  --color-green-400: #6a7d6e;
+  --color-green-500: #4b6858;
+  --color-green-600: #3a5245;
+  --color-green-700: #2d4036;
+  --color-green-800: #21302a;
+  --color-green-900: #16211d;
+
+  --color-lightgreen-50: #f0f5ec;
+  --color-lightgreen-100: #e5eae4;
+  --color-lightgreen-200: #d2dbcf;
+  --color-lightgreen-300: #b7c4b3;
+  --color-lightgreen-400: #9daa97;
+  --color-lightgreen-500: #84907d;
+  --color-lightgreen-600: #6a7664;
+  --color-lightgreen-700: #505b4b;
+  --color-lightgreen-800: #374034;
+  --color-lightgreen-900: #1f261e;
+
+  --color-pink-50: #fae5f2;
+  --color-pink-100: #f1b8e1;
+  --color-pink-200: #e089cb;
+  --color-pink-300: #d155a8;
+  --color-pink-400: #b72e88;
+  --color-pink-500: #a4036f;
+  --color-pink-600: #850159;
+  --color-pink-700: #71024d;
+  --color-pink-800: #5a013e;
+  --color-pink-900: #460031;
+
+  --color-gold-50: #fbf3e0;
+  --color-gold-100: #f5e6c0;
+  --color-gold-200: #e5c994;
+  --color-gold-300: #c9a86a;
+  --color-gold-400: #b18f52;
+  --color-gold-500: #9f854e;
+  --color-gold-600: #856a3e;
+  --color-gold-700: #6a5331;
+  --color-gold-800: #51402a;
+  --color-gold-900: #3d3020;
+
+  --color-peach-50: #fcecec;
+  --color-peach-100: #f8e5e6;
+  --color-peach-200: #f0d1d3;
+  --color-peach-300: #e8b4b8;
+  --color-peach-400: #d18d92;
+  --color-peach-500: #ba6a71;
+  --color-peach-600: #a2525b;
+  --color-peach-700: #803d46;
+  --color-peach-800: #662e37;
+  --color-peach-900: #4d232a;
+
+  --color-blue-50: #e5f7fb;
+  --color-blue-100: #b0e3ed;
+  --color-blue-200: #69c5d8;
+  --color-blue-300: #048ba8;
+  --color-blue-400: #036a80;
+  --color-blue-500: #025066;
+  --color-blue-600: #013d50;
+  --color-blue-700: #012d3b;
+  --color-blue-800: #011f28;
+  --color-blue-900: #00151b;
+
+  --color-black-50: #a0a0a0;
+  --color-black-100: #868686;
+  --color-black-200: #686868;
+  --color-black-300: #4a4a4a;
+  --color-black-400: #2b2b2b;
+  --color-black-500: #171717;
+  --color-black-600: #101010;
+  --color-black-700: #0b0b0b;
+  --color-black-800: #080808;
+  --color-black-900: #050505;
+}
+
+/* Style bosons */
+
+@layer components {
+  /* Text Styles */
+
+  .title {
+    @apply text-4xl font-bold text-white-200;
+  }
+
+  .subtitle {
+    @apply text-3xl font-handwriting text-gold-200;
+  }
+
+  .body-text {
+    @apply font-primary text-peach-300;
+  }
+}
+
+/* Homepage custom media queries */
+
+@media (max-width: 1200px) {
+  .custom-flex-col {
+    @apply flex-col-reverse items-center justify-between gap-8;
+  }
+
+  .custom-text-align {
+    @apply text-center items-center;
+  }
+}
+
+/* FIX for medium screens (between 768px and 1200px) */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .custom-text-align {
+    @apply text-center items-center;
+  }
+}
+
+@media (min-width: 1201px) {
+  .custom-text-align {
+    @apply text-left items-start;
+  }
+
+  .custom-image-size {
+    @apply w-[400px] h-[400px];
+  }
+
+  .custom-margin {
+    @apply ml-40;
+  }
+}
