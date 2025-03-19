@@ -29,7 +29,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
           SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
           USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
-          REMOTE_PATH: "/home/master/applications/YOUR_APP/public_html"
+          REMOTE_PATH: "/home/master/applications/arngwenysw/public_html"
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
@@ -45,7 +45,7 @@ jobs:
           USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USERNAME@$SERVER_IP << 'EOF'
-            cd /home/master/applications/YOUR_APP/public_html
+            cd /home/master/applications/arngwenysw/public_html
             npm install --omit=dev
             pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
             pm2 save
