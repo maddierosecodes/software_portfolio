@@ -61,9 +61,17 @@ jobs:
           CLOUDWAYS_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
           CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
         run: |
+          echo "🔍 Checking environment variables..."
+          echo "CLOUDWAYS_EMAIL: $CLOUDWAYS_EMAIL"
+          echo "CLOUDWAYS_API_KEY: [HIDDEN]"  # Don't print the API key for security
+          echo "CLOUDWAYS_APP_ID: $CLOUDWAYS_APP_ID"
+
           AUTH_TOKEN=$(curl -s -X POST "https://api.cloudways.com/api/v1/oauth/access_token" \
             -H "Content-Type: application/x-www-form-urlencoded" \
-            -d "email=$CLOUDWAYS_EMAIL&api_key=$CLOUDWAYS_API_KEY" | jq -r '.access_token')
+            --data-urlencode "email=$CLOUDWAYS_EMAIL" \
+            --data-urlencode "api_key=$CLOUDWAYS_API_KEY" | jq -r '.access_token')
+
+          echo "🔑 AUTH_TOKEN: $AUTH_TOKEN"
 
           if [ -z "$AUTH_TOKEN" ] || [ "$AUTH_TOKEN" == "null" ]; then
             echo "❌ Failed to authenticate with Cloudways API"
