@@ -34,8 +34,8 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          rsync -avz --delete-after --exclude '.git' --exclude 'node_modules' \
-            --exclude '.next/cache' --exclude '.htaccess' \
+          rsync -avz --delete-after --no-perms --omit-dir-times --exclude '.git' --exclude 'node_modules' \
+            --exclude '.next/cache' --exclude '.htaccess' --exclude 'index.php' --exclude 'output.log' \
             -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
             ./ $USERNAME@$SERVER_IP:$REMOTE_PATH
 
