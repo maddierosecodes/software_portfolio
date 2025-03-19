@@ -29,7 +29,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
           SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
           USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
-          REMOTE_PATH: "/home/master/applications/arngwenysw/public_html"
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
@@ -37,19 +37,33 @@ jobs:
           rsync -avz --delete-after --no-perms --omit-dir-times --chmod=ugo=rwX --exclude '.git' --exclude 'node_modules' \
             --exclude '.next/cache' --exclude '.htaccess' --exclude 'index.php' --exclude 'output.log' \
             -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
-            ./ $USERNAME@$SERVER_IP:$REMOTE_PATH
+            ./ $USERNAME@$SERVER_IP:/home/master/applications/$CLOUDWAYS_APP_ID/public_html
 
       - name: Restart PM2 Process
         env:
           SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
           USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USERNAME@$SERVER_IP << 'EOF'
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            cd /home/master/applications/arngwenysw/public_html
+            cd /home/master/applications/$CLOUDWAYS_APP_ID/public_html
             npm install --omit=dev
             npm install -g pm2
             pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
             pm2 save
           EOF
+
+      - name: Purge Cloudways Varnish Cache
+        env:
+          CLOUDWAYS_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
+          CLOUDWAYS_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
+        run: |
+          AUTH_TOKEN=$(curl -s -X POST "https://api.cloudways.com/api/v1/oauth/access_token" \
+            -d "email=$CLOUDWAYS_EMAIL&api_key=$CLOUDWAYS_API_KEY" | jq -r '.access_token')
+
+          curl -s -X POST "https://api.cloudways.com/api/v1/app/manage/varnish/purge" \
+            -H "Authorization: Bearer $AUTH_TOKEN" \
+            -d "server_id=$CLOUDWAYS_APP_ID&app_id=$CLOUDWAYS_APP_ID"
