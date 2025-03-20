@@ -60,11 +60,13 @@ jobs:
           CLOUDWAYS_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
           CLOUDWAYS_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
           CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
+          CLOUDWAYS_SERVER_ID: ${{ secrets.CLOUDWAYS_SERVER_ID }} # NEW: Server ID needed
         run: |
           echo "🔍 Checking environment variables..."
           echo "CLOUDWAYS_EMAIL: $CLOUDWAYS_EMAIL"
-          echo "CLOUDWAYS_API_KEY: [HIDDEN]"  # Don't print the API key for security
+          echo "CLOUDWAYS_API_KEY: [HIDDEN]"  # Hide for security
           echo "CLOUDWAYS_APP_ID: $CLOUDWAYS_APP_ID"
+          echo "CLOUDWAYS_SERVER_ID: $CLOUDWAYS_SERVER_ID"
 
           AUTH_TOKEN=$(curl -s -X POST "https://api.cloudways.com/api/v1/oauth/access_token" \
             -H "Content-Type: application/x-www-form-urlencoded" \
@@ -78,7 +80,9 @@ jobs:
             exit 1
           fi
 
+          echo "🚀 Purging Cloudways Varnish Cache..."
           curl -s -X POST "https://api.cloudways.com/api/v1/app/manage/varnish/purge" \
             -H "Authorization: Bearer $AUTH_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"server_id\": \"$CLOUDWAYS_APP_ID\", \"app_id\": \"$CLOUDWAYS_APP_ID\"}"
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            --data-urlencode "server_id=$CLOUDWAYS_SERVER_ID" \
+            --data-urlencode "app_id=$CLOUDWAYS_APP_ID"
