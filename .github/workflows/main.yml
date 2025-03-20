@@ -81,8 +81,8 @@ jobs:
           fi
 
           echo "🚀 Purging Cloudways Varnish Cache..."
-          curl -s -X POST "https://api.cloudways.com/api/v1/app/manage/varnish/purge" \
+          curl -s -X POST "https://api.cloudways.com/api/v1/service/varnish" \
             -H "Authorization: Bearer $AUTH_TOKEN" \
             -H "Content-Type: application/x-www-form-urlencoded" \
             --data-urlencode "server_id=$CLOUDWAYS_SERVER_ID" \
-            --data-urlencode "app_id=$CLOUDWAYS_APP_ID"
+            --data-urlencode "action=purge"
