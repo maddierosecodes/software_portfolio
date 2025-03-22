@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Running ESLint..."
+npm run lint
+
+echo "✅ Lint passed!"
+
+# echo "🔍 Running tests..."
+# npm test
+
+# echo "✅ tests passed! Committing code..."

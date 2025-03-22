@@ -1,15 +1,15 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Custom tailwind theme extensions */
 @theme {
   /* Fonts */
 
-  --font-primary: "Inter", sans-serif;
-  --font-secondary: "Merriweather", serif;
-  --font-display: "Playfair Display", serif;
-  --font-handwriting: "Kalam", cursive;
-  --font-futuristic: "Orbitron", sans-serif;
-  --font-bold: "Oswald", sans-serif;
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Merriweather', serif;
+  --font-display: 'Playfair Display', serif;
+  --font-handwriting: 'Kalam', cursive;
+  --font-futuristic: 'Orbitron', sans-serif;
+  --font-bold: 'Oswald', sans-serif;
 
   /* Colours */
 

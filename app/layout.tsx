@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header";
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
-  title: "MaddieRoseCodes Portfolio",
+  title: 'MaddieRoseCodes Portfolio',
   description: "Maddie's Portfolio Site",
 };
 

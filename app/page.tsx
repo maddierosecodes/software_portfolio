@@ -1,5 +1,5 @@
-import Image from "next/image";
-import profilePic from "./profile.png";
+import Image from 'next/image';
+import profilePic from './profile.png';
 
 export default function Home() {
   return (
