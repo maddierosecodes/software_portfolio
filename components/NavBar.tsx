@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
 const navLinks = [
-  { name: "Home", path: "/" },
+  { name: 'Home', path: '/' },
   {
-    name: "About Me",
-    path: "/about",
+    name: 'About Me',
+    path: '/about',
   },
   {
-    name: "My Projects",
-    path: "/projects",
+    name: 'My Projects',
+    path: '/projects',
   },
   {
-    name: "Contact Me",
-    path: "/contact",
+    name: 'Contact Me',
+    path: '/contact',
   },
 ];
 

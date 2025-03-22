@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import NavBar from "./NavBar";
+import { usePathname } from 'next/navigation';
+import NavBar from './NavBar';
 
 function Header() {
   const currentPage = usePathname();
@@ -10,7 +10,7 @@ function Header() {
       <h1 className="subtitle mx-2">MaddieRoseCodes</h1>
 
       <h2 className="title text-center mt-2 px-2">
-        {currentPage === "/" ? "Can You See Me?" : currentPage.slice(1)}
+        {currentPage === '/' ? 'Can You See Me?' : currentPage.slice(1)}
       </h2>
       <NavBar />
     </header>
