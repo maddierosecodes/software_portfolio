@@ -29,7 +29,7 @@ export default function Home() {
               src={profilePic}
               width={500}
               height={500}
-              alt="Picture of Maddie"
+              alt="A photo of Maddie, the maddierosecodessite owner and creator"
               className="w-full h-full object-cover"
             />
           </div>

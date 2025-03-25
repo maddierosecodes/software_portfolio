@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 const navLinks = [
   { name: 'Home', path: '/' },
   {
@@ -21,13 +23,13 @@ export default function NavBar() {
     <nav className="flex justify-between items-center gap-1 self-end pr-0.5">
       {navLinks.map((navLink, i) => {
         return (
-          <a
+          <Link
             key={navLink.path + i}
             href={navLink.path}
             className="bg-pink-500 p-1 rounded-md rounded-b-none text-white-500 hover:bg-pink-200 hover:text-white-900"
           >
             {navLink.name}
-          </a>
+          </Link>
         );
       })}
     </nav>

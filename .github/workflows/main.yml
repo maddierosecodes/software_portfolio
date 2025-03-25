@@ -24,6 +24,15 @@ jobs:
       - name: Build Next.js App
         run: npm run build
 
+      - name: Run Linting
+        run: npm run lint
+
+      - name: Run Formatting Check
+        run: npm run format:check
+
+      - name: Run Tests
+        run: npm run test
+
       - name: Upload to Cloudways via SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
