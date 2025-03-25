@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import NavBar from './NavBar';
+import NavBar from '../molecules/NavBar';
 
 function Header() {
   const currentPage = usePathname();
