@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/organisms/Header';
+import Footer from '@/components/organisms/Footer';
 import StructuredData from '@/components/atoms/StructuredData';
 import { personSchema, websiteSchema } from '@/config/structuredData';
 
@@ -91,11 +92,12 @@ export default function RootLayout({
         <StructuredData data={personSchema} />
         <StructuredData data={websiteSchema} />
       </head>
-      <body className="bg-blue-700">
+      <body className="bg-blue-700 min-h-screen flex flex-col">
         <Header />
-        <main role="main" aria-label="Main content">
+        <main role="main" aria-label="Main content" className="flex-grow">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
