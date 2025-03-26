@@ -2,26 +2,22 @@
 
 import Link from 'next/link';
 
-const navLinks = [
-  { name: 'Home', path: '/' },
-  {
-    name: 'About Me',
-    path: '/about',
-  },
-  {
-    name: 'My Projects',
-    path: '/projects',
-  },
-  {
-    name: 'Contact Me',
-    path: '/contact',
-  },
-];
+interface NavItem {
+  name: string;
+  path: string;
+}
 
-export default function NavBar() {
+interface NavBarProps {
+  items: NavItem[];
+  className?: string;
+}
+
+export default function NavBar({ items, className = '' }: NavBarProps) {
   return (
-    <nav className="flex justify-between items-center gap-1 self-end pr-0.5">
-      {navLinks.map((navLink, i) => {
+    <nav
+      className={`flex justify-between items-center gap-1 self-end pr-0.5 mt-auto ${className}`}
+    >
+      {items.map((navLink, i) => {
         return (
           <Link
             key={navLink.path + i}

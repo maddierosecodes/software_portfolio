@@ -108,15 +108,50 @@
   /* Text Styles */
 
   .title {
-    @apply text-4xl font-bold text-white-200;
+    @apply text-4xl font-bold text-white-200 text-[clamp(3rem,6vw,6rem)];
   }
 
   .subtitle {
-    @apply text-3xl font-handwriting text-gold-200;
+    @apply text-3xl font-handwriting text-gold-200 text-[clamp(2rem,4vw,4rem)];
   }
 
   .body-text {
-    @apply font-primary text-peach-300;
+    @apply font-primary text-peach-300 text-[clamp(1rem,2vw,2rem)];
+  }
+
+  /* Layout Bosons */
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .section-container {
+    @apply mx-[10%] px-10 pt-10 h-fit pb-20;
+  }
+
+  .content-width {
+    @apply sm:w-1/2 w-full;
+  }
+
+  /* Spacing Bosons */
+  .section-spacing {
+    @apply space-y-4;
+  }
+
+  .content-padding {
+    @apply lg:pl-10 sm:px-20;
+  }
+
+  /* Color Gradient Bosons */
+  .text-gradient-gold {
+    @apply text-gold-200 hover:text-gold-300 transition-colors duration-200;
+  }
+
+  .border-gradient-pink {
+    @apply border-pink-200 hover:border-pink-300 transition-colors duration-200;
   }
 }
 
