@@ -1,15 +1,12 @@
 import React from 'react';
 import FooterContent from '../molecules/FooterContent';
+import FooterLayout from '../layouts/FooterLayout';
 
 const Footer: React.FC = () => {
   return (
-    <footer
-      className="w-full py-4 bg-gray-900 text-white"
-      role="contentinfo"
-      aria-label="Site footer"
-    >
-      <FooterContent name="Madeleine Hughes - MaddieRoseCodes" />
-    </footer>
+    <FooterLayout role="contentinfo" aria-label="Site footer">
+      <FooterContent name="Maddie Rose" />
+    </FooterLayout>
   );
 };
 

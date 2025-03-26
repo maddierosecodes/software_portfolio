@@ -1,6 +1,7 @@
 import CallToActionButton from '../atoms/CallToActionButton';
 import ThreeLayerTitleText from '../atoms/ThreeLayerTitleText';
 import ProfileImage from '../atoms/ProfileImage';
+import TwoColumnLayout from '../layouts/TwoColumnLayout';
 import { StaticImageData } from 'next/image';
 
 interface HeroProps {
@@ -23,12 +24,8 @@ export default function Hero({
   onCtaClick,
 }: HeroProps) {
   return (
-    <section
-      className="section-container custom-flex-col flex-between"
-      role="banner"
-      aria-label="Hero section"
-    >
-      <div className="content-width mt-10 flex flex-col items-center xl:items-start">
+    <TwoColumnLayout role="banner" aria-label="Hero section">
+      <div className="flex flex-col items-center xl:items-start">
         <ThreeLayerTitleText
           topText={greeting}
           mainText={name}
@@ -41,9 +38,9 @@ export default function Hero({
         />
       </div>
 
-      <div className="content-width flex-center">
+      <div className="flex-center">
         <ProfileImage src={imageSrc} alt={imageAlt} size="large" role="img" />
       </div>
-    </section>
+    </TwoColumnLayout>
   );
 }

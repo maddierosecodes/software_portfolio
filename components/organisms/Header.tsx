@@ -2,33 +2,28 @@
 
 import { usePathname } from 'next/navigation';
 import NavBar from '../molecules/NavBar';
+import HeaderLayout from '../layouts/HeaderLayout';
 import { routes, getCurrentPageTitle } from '../../config/routes';
 
 function Header() {
   const currentPage = usePathname();
 
   return (
-    <header
-      className="flex flex-wrap justify-between items-center bg-blue-500 h-24 mx-[10%] px-4"
+    <HeaderLayout
       role="banner"
       aria-label="Site header"
+      leftSectionClassName="subtitle text-[clamp(1.5rem,2vw,2.5rem)] mx-2"
+      centerSectionClassName="title text-[clamp(1.5rem,2vw,2.5rem)]"
+      rightSectionClassName=""
     >
-      <h1
-        className="subtitle text-[clamp(1.5rem,2vw,2.5rem)] mx-2"
-        aria-label="MaddieRoseCodes - Home"
-      >
-        MaddieRoseCodes
-      </h1>
+      <h1 aria-label="MaddieRoseCodes - Home">MaddieRoseCodes</h1>
 
-      <h2
-        className="title text-[clamp(1.5rem,2vw,2.5rem)] text-center mt-2 px-2"
-        aria-label={`Current page: ${getCurrentPageTitle(currentPage)}`}
-      >
+      <h2 aria-label={`Current page: ${getCurrentPageTitle(currentPage)}`}>
         {getCurrentPageTitle(currentPage)}
       </h2>
 
       <NavBar items={routes} />
-    </header>
+    </HeaderLayout>
   );
 }
 
