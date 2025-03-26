@@ -1,0 +1,100 @@
+name: Deployment
+
+on:
+  workflow_call:
+    secrets:
+      CLOUDWAYS_SSH_KEY:
+        required: true
+        type: string
+      CLOUDWAYS_SERVER_IP:
+        required: true
+        type: string
+      CLOUDWAYS_USERNAME:
+        required: true
+        type: string
+      CLOUDWAYS_APP_ID:
+        required: true
+        type: string
+      CLOUDWAYS_EMAIL:
+        required: true
+        type: string
+      CLOUDWAYS_API_KEY:
+        required: true
+        type: string
+      CLOUDWAYS_SERVER_ID:
+        required: true
+        type: string
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+
+  deploy:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Next.js App
+        run: npm run build
+
+      - name: Upload to Cloudways via SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
+          SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
+          USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          rsync -avz --delete-after --no-perms --omit-dir-times --chmod=ugo=rwX --exclude '.git' --exclude 'node_modules' \
+            --exclude '.next/cache' --exclude '.htaccess' --exclude 'index.php' --exclude 'output.log' \
+            -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
+            ./ $USERNAME@$SERVER_IP:/home/master/applications/$CLOUDWAYS_APP_ID/public_html
+
+      - name: Restart PM2 Process
+        env:
+          SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
+          USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USERNAME@$SERVER_IP << 'EOF'
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            cd /home/master/applications/$CLOUDWAYS_APP_ID/public_html
+            npm install --omit=dev
+            npm install -g pm2
+            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+            pm2 save
+          EOF
+
+      - name: Purge Cloudways Varnish Cache
+        env:
+          CLOUDWAYS_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
+          CLOUDWAYS_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
+          CLOUDWAYS_SERVER_ID: ${{ secrets.CLOUDWAYS_SERVER_ID }}
+        run: |
+          echo "🔍 Checking environment variables..."
+          echo "CLOUDWAYS_EMAIL: $CLOUDWAYS_EMAIL"
+          echo "CLOUDWAYS_API_KEY: [HIDDEN]"  # Hide for security
+          echo "CLOUDWAYS_APP_ID: $CLOUDWAYS_APP_ID"
+          echo "CLOUDWAYS_SERVER_ID: $CLOUDWAYS_SERVER_ID"
+
+          AUTH_TOKEN=$(curl -s -X POST "https://api.cloudways.com/api/v1/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            --data-urlencode "email=$CLOUDWAYS_EMAIL" \
+            --data-urlencode "api_key=$CLOUDWAYS_API_KEY" | jq -r '.access_token')
+
+          echo "🔑 AUTH_TOKEN: $AUTH_TOKEN"
+
+          if [ -z "$AUTH_TOKEN" ] || [ "$AUTH_TOKEN" == "null" ]; then
+            echo "❌ Failed to authenticate with Cloudways API"
+            exit 1
+          fi
+
+          echo "🚀 Purging Cloudways Varnish Cache..."
+          curl -s -X POST "https://api.cloudways.com/api/v1/service/varnish" \
+            -H "Authorization: Bearer $AUTH_TOKEN" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            --data-urlencode "server_id=$CLOUDWAYS_SERVER_ID" \
+            --data-urlencode "action=purge"
