@@ -1,0 +1,24 @@
+name: Quality Checks
+
+on:
+  workflow_call:
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+
+  quality:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Next.js App
+        run: npm run build
+
+      - name: Run Linting
+        run: npm run lint
+
+      - name: Run Formatting Check
+        run: npm run format:check
+
+      - name: Run Tests
+        run: npm run test

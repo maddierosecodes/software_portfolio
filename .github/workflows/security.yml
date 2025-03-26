@@ -1,0 +1,30 @@
+name: Security Checks
+
+on:
+  workflow_call:
+    secrets:
+      SNYK_TOKEN:
+        required: true
+        type: string
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+
+  dependency-audit:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run npm audit
+        run: npm audit
+
+  security-scan:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
