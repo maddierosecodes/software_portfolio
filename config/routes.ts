@@ -34,7 +34,9 @@ export const routes: Route[] = [
 ];
 
 export const getRouteByPath = (path: string): Route | undefined => {
-  return routes.find((route) => route.path === path);
+  return routes.find(
+    (route) => route.path.toLowerCase() === path.toLowerCase(),
+  );
 };
 
 export const getCurrentPageTitle = (path: string): string => {

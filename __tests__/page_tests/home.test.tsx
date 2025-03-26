@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Home from '../../app/page';
-import RootLayout from '../../app/layout';
 import { usePathname } from 'next/navigation';
 import mockRouter from 'next-router-mock';
 
@@ -15,11 +14,7 @@ describe('As a visitor, I am greeted by a hero section, with information about t
   beforeEach(() => {
     mockRouter.push('/');
     jest.mocked(usePathname).mockReturnValue('/');
-    render(
-      <RootLayout>
-        <Home />
-      </RootLayout>,
-    );
+    render(<Home />);
   });
   test('When I open the website, I see a photo of the author', () => {
     expect(
@@ -34,7 +29,9 @@ describe('As a visitor, I am greeted by a hero section, with information about t
     ).toBeInTheDocument();
   });
   test('When I select the CTA button (nothing happens yet!)', async () => {
-    const ctaButton = screen.getByRole('button', { name: 'CTA Button' });
+    const ctaButton = screen.getByRole('button', {
+      name: 'CTA Button - Maddie',
+    });
     expect(ctaButton).toBeInTheDocument();
     await userEvent.click(ctaButton);
     expect(ctaButton).toBeInTheDocument();

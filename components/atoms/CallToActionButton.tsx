@@ -2,17 +2,21 @@ interface CallToActionButtonProps {
   text: string;
   onClick?: () => void;
   disabled?: boolean;
+  ariaLabel?: string;
 }
 
 export default function CallToActionButton({
   text,
   onClick,
   disabled = false,
+  ariaLabel,
 }: CallToActionButtonProps) {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
+      aria-label={ariaLabel || text}
+      aria-disabled={disabled}
       className={`
         custom-margin text-pink-500 bg-gold-200
         py-2 px-4 rounded-3xl border-4 border-pink-200
