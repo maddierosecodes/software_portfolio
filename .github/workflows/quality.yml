@@ -4,13 +4,20 @@ on:
   workflow_call:
 
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
-
   quality:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Build Next.js App
         run: npm run build
 

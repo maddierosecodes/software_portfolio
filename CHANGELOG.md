@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2024-03-28
+
+### Added
+
+- New layout components for consistent page structure:
+  - PageSectionLayout for Projects and Blog sections
+  - TwoColumnLayout for Hero and content-heavy pages
+  - HeaderLayout for standardised header structure
+  - FooterLayout for consistent footer implementation
+- Enhanced documentation for layout components
+- Updated README with layout component usage guidelines
+
+### Changed
+
+- Refactored existing components to use new layout components:
+  - Hero component now uses TwoColumnLayout
+  - Header component now uses HeaderLayout
+  - Footer component now uses FooterLayout
+  - Projects and Blog pages now use PageSectionLayout
+- Improved component organisation with dedicated layouts directory
+- Updated atomic design documentation to include layout components
+
+### Fixed
+
+- Inconsistent spacing and container widths across sections
+- Responsive layout issues in content-heavy pages
+- Header and footer structure inconsistencies
+
 ## [0.3.0] - 2024-03-27
 
 ### Added

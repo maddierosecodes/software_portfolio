@@ -5,34 +5,34 @@ on:
     secrets:
       CLOUDWAYS_SSH_KEY:
         required: true
-        type: string
       CLOUDWAYS_SERVER_IP:
         required: true
-        type: string
       CLOUDWAYS_USERNAME:
         required: true
-        type: string
       CLOUDWAYS_APP_ID:
         required: true
-        type: string
       CLOUDWAYS_EMAIL:
         required: true
-        type: string
       CLOUDWAYS_API_KEY:
         required: true
-        type: string
       CLOUDWAYS_SERVER_ID:
         required: true
-        type: string
 
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
-
   deploy:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Build Next.js App
         run: npm run build
 
