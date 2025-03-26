@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       role="contentinfo"
       aria-label="Site footer"
     >
-      <FooterContent name="Maddie Rose" />
+      <FooterContent name="Madeleine Hughes - MaddieRoseCodes" />
     </footer>
   );
 };
