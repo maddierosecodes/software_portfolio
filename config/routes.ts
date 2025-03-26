@@ -1,8 +1,4 @@
-export interface Route {
-  name: string;
-  path: string;
-  description?: string;
-}
+import { Route } from '../types/routes.types';
 
 export const routes: Route[] = [
   {
@@ -19,6 +15,16 @@ export const routes: Route[] = [
     name: 'My Projects',
     path: '/projects',
     description: 'View my portfolio projects',
+  },
+  {
+    name: 'Blog',
+    path: '/blog',
+    description: 'Read my latest blog posts',
+  },
+  {
+    name: 'Games',
+    path: '/games',
+    description: 'Play my interactive games',
   },
   {
     name: 'Contact Me',

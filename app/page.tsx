@@ -1,5 +1,8 @@
+import { FC } from 'react';
 import HomeHero from '@/components/organisms/HomeHero';
 
-export default function Home() {
+const Home: FC = () => {
   return <HomeHero />;
-}
+};
+
+export default Home;
