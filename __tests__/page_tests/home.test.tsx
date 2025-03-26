@@ -36,4 +36,11 @@ describe('As a visitor, I am greeted by a hero section, with information about t
     await userEvent.click(ctaButton);
     expect(ctaButton).toBeInTheDocument();
   });
+  test('When I use a keyboard, I can navigate to and focus the CTA button', async () => {
+    const ctaButton = screen.getByRole('button', {
+      name: 'CTA Button - Maddie',
+    });
+    ctaButton.focus();
+    expect(ctaButton).toHaveFocus();
+  });
 });
