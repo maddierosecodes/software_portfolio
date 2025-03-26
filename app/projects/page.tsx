@@ -1,4 +1,6 @@
-export default function Projects() {
+import { FC } from 'react';
+
+const Projects: FC = () => {
   return (
     <section className="flex justify-center items-center mx-[10%] px-10 pt-10 h-fit pb-20 custom-flex-col">
       <h1 className="text-9xl text-green-200 text-center w-fit">
@@ -7,4 +9,6 @@ export default function Projects() {
       </h1>
     </section>
   );
-}
+};
+
+export default Projects;

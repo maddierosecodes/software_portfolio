@@ -1,11 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-
-interface NavItem {
-  name: string;
-  path: string;
-}
+import { NavItem } from '../../types/routes.types';
 
 interface NavBarProps {
   items: NavItem[];
