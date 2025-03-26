@@ -105,10 +105,40 @@ components/
 ├── molecules/          # Combinations of atoms and bosons
 │   ├── molecules.md    # Documentation
 │   └── [ComponentName].tsx
-└── organisms/          # Contextual components
-    ├── organisms.md    # Documentation
-    └── [ComponentName].tsx
+├── organisms/          # Contextual components
+│   ├── organisms.md    # Documentation
+│   └── [ComponentName].tsx
+└── layouts/           # Page and section layouts
+    ├── layouts.md     # Documentation
+    └── [LayoutName].tsx
 ```
+
+### Layout Components
+
+The project uses a set of reusable layout components to maintain consistent structure across pages:
+
+1. **PageSectionLayout**
+
+   - Used for consistent section layouts in Projects and Blog pages
+   - Provides standardised spacing and container widths
+   - Ensures visual consistency across different content sections
+
+2. **TwoColumnLayout**
+
+   - Implements responsive two-column layouts
+   - Used in Hero sections and content-heavy pages
+   - Automatically stacks on mobile devices
+
+3. **HeaderLayout**
+
+   - Standardises header structure across pages
+   - Manages navigation and branding placement
+   - Handles responsive menu behaviours
+
+4. **FooterLayout**
+   - Provides consistent footer structure
+   - Manages social links and copyright information
+   - Ensures proper spacing and alignment
 
 ### Testing Structure
 
@@ -199,11 +229,35 @@ This project is deployed using a CI/CD pipeline that automates the build, test, 
 
 ### Automated Pipeline
 
-- Automatic deployment on push to main branch
-- Build verification and testing
-- Code quality checks (linting and formatting)
-- Automated deployment to Cloudways via SSH
-- Cache management and server updates
+The deployment process is split into three main stages:
+
+1. **Security Checks**
+
+   - Dependency vulnerability scanning with `npm audit`
+   - Comprehensive security scanning with Snyk
+   - Automatic GitHub issue creation for vulnerabilities
+   - Detailed security reports generated as artifacts
+   - Configurable severity thresholds
+
+2. **Quality Checks**
+
+   - Code linting and formatting verification
+   - TypeScript type checking
+   - Unit and integration tests
+   - Build verification
+   - Performance checks
+
+3. **Deployment**
+   - Automated deployment to Cloudways via SSH
+   - PM2 process management
+   - Varnish cache purging
+   - Server updates and optimisations
+
+Each stage must pass before proceeding to the next, ensuring:
+
+- No security vulnerabilities are deployed
+- Code quality standards are maintained
+- Production environment remains stable
 
 ### Deployment Environment
 
