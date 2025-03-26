@@ -4,12 +4,14 @@ interface ProfileImageProps {
   src: string | StaticImageData;
   alt: string;
   size?: 'default' | 'large';
+  role?: string;
 }
 
 export default function ProfileImage({
   src,
   alt,
   size = 'default',
+  role,
 }: ProfileImageProps) {
   const sizeClasses = {
     default: 'w-[clamp(8rem,20vw,14rem)]',
@@ -20,6 +22,7 @@ export default function ProfileImage({
     <div className="border-gradient-pink overflow-hidden rounded-full bg-pink-200 p-2">
       <div
         className={`overflow-hidden rounded-full bg-blue-500 aspect-square ${sizeClasses[size]}`}
+        role={role}
       >
         <Image
           src={src}

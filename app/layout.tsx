@@ -16,7 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-blue-700">
         <Header />
-        <main>{children}</main>
+        <main role="main" aria-label="Main content">
+          {children}
+        </main>
       </body>
     </html>
   );

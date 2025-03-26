@@ -23,18 +23,26 @@ export default function Hero({
   onCtaClick,
 }: HeroProps) {
   return (
-    <section className="section-container custom-flex-col flex-between">
+    <section
+      className="section-container custom-flex-col flex-between"
+      role="banner"
+      aria-label="Hero section"
+    >
       <div className="content-width mt-10 flex flex-col items-center xl:items-start">
         <ThreeLayerTitleText
           topText={greeting}
           mainText={name}
           bottomText={subtitle}
         />
-        <CallToActionButton text={ctaText} onClick={onCtaClick} />
+        <CallToActionButton
+          text={ctaText}
+          onClick={onCtaClick}
+          ariaLabel={`${ctaText} - ${name}`}
+        />
       </div>
 
       <div className="content-width flex-center">
-        <ProfileImage src={imageSrc} alt={imageAlt} size="large" />
+        <ProfileImage src={imageSrc} alt={imageAlt} size="large" role="img" />
       </div>
     </section>
   );
