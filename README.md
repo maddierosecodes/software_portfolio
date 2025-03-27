@@ -23,6 +23,7 @@ A modern, responsive portfolio website built with Next.js, React, and TailwindCS
 - 🎭 Dark/Light mode support
 - 📝 Blog section
 - 🔍 Search functionality
+- 👤 About Me section
 
 ## Tech Stack
 
@@ -34,6 +35,7 @@ A modern, responsive portfolio website built with Next.js, React, and TailwindCS
 - **Version Control:** Git with Husky pre-commit hooks
 - **Deployment:** Cloudways
 - **Development:** Trunk-based development with CI/CD pipeline
+- **Security:** Snyk integration and automated vulnerability scanning
 
 ## Prerequisites
 
