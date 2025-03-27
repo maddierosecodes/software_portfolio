@@ -1,20 +1,16 @@
-import { FC } from 'react';
+import AboutHero from '@/components/organisms/AboutHero';
+import { Metadata } from 'next';
 
-const About: FC = () => {
-  return (
-    <section
-      className="flex justify-center items-center mx-[10%] px-10 pt-10 h-fit pb-20 custom-flex-col"
-      role="region"
-      aria-label="About page content"
-    >
-      <h1
-        className="text-9xl text-red-200 text-center w-fit"
-        aria-label="About page coming soon"
-      >
-        COMING SOON
-      </h1>
-    </section>
-  );
+export const metadata: Metadata = {
+  title: 'About Me | Maddie Rose Codes',
+  description:
+    'Learn more about Maddie Rose Codes and her journey in software development.',
 };
 
-export default About;
+export default function AboutPage() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <AboutHero />
+    </main>
+  );
+}

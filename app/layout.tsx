@@ -1,11 +1,18 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/organisms/Header';
 import Footer from '@/components/organisms/Footer';
 import StructuredData from '@/components/atoms/StructuredData';
 import { personSchema, websiteSchema } from '@/config/structuredData';
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://maddierosecodes.com'),
   title: {
     default: 'MaddieRoseCodes | Freelance Web & Software Developer',
     template: '%s | MaddieRoseCodes',
@@ -61,11 +68,6 @@ export const metadata: Metadata = {
       "Maddie's Portfolio Site - Freelance Web & Software Developer based in Chorley, Lancashire, UK, serving clients worldwide. Specialising in modern web development and interactive applications.",
     images: ['/og-image.jpg'],
     creator: '@maddierosecodes',
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
   },
   verification: {
     google: 'your-google-site-verification',

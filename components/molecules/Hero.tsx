@@ -1,46 +1,50 @@
-import CallToActionButton from '../atoms/CallToActionButton';
-import ThreeLayerTitleText from '../atoms/ThreeLayerTitleText';
-import ProfileImage from '../atoms/ProfileImage';
+'use client';
+
+import FramedImage from '../atoms/FramedImage';
 import TwoColumnLayout from '../layouts/TwoColumnLayout';
 import { StaticImageData } from 'next/image';
 
-interface HeroProps {
-  greeting: string;
-  name: string;
-  subtitle: string;
-  ctaText: string;
+type HeroProps = {
   imageSrc: string | StaticImageData;
   imageAlt: string;
-  onCtaClick?: () => void;
-}
+  imagePosition: 'left' | 'right';
+  imageShape: 'circle' | 'star' | 'square';
+  children: React.ReactNode;
+  priority?: boolean;
+};
 
-export default function Hero({
-  greeting,
-  name,
-  subtitle,
-  ctaText,
-  imageSrc,
-  imageAlt,
-  onCtaClick,
-}: HeroProps) {
+export default function Hero(props: HeroProps) {
+  const {
+    imageSrc,
+    imageAlt,
+    imagePosition,
+    imageShape,
+    children,
+    priority = false,
+  } = props;
+
+  const imageContent = (
+    <div className="flex items-center justify-center h-full">
+      <FramedImage
+        src={imageSrc}
+        alt={imageAlt}
+        size="large"
+        role="img"
+        shape={imageShape}
+        priority={priority}
+      />
+    </div>
+  );
+
   return (
-    <TwoColumnLayout role="banner" aria-label="Hero section">
-      <div className="flex flex-col items-center xl:items-start">
-        <ThreeLayerTitleText
-          topText={greeting}
-          mainText={name}
-          bottomText={subtitle}
-        />
-        <CallToActionButton
-          text={ctaText}
-          onClick={onCtaClick}
-          ariaLabel={`${ctaText} - ${name}`}
-        />
-      </div>
-
-      <div className="flex-center">
-        <ProfileImage src={imageSrc} alt={imageAlt} size="large" role="img" />
-      </div>
+    <TwoColumnLayout
+      role="banner"
+      aria-label="Hero section"
+      leftColumnClassName={imagePosition === 'right' ? 'order-1' : 'order-2'}
+      rightColumnClassName={imagePosition === 'right' ? 'order-2' : 'order-1'}
+    >
+      {imagePosition === 'left' ? imageContent : children}
+      {imagePosition === 'right' ? imageContent : children}
     </TwoColumnLayout>
   );
 }
