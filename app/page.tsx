@@ -17,7 +17,11 @@ export const metadata: Metadata = {
 };
 
 const Home: FC = () => {
-  return <HomeHero />;
+  return (
+    <main role="main" aria-label="Home page content">
+      <HomeHero />
+    </main>
+  );
 };
 
 export default Home;

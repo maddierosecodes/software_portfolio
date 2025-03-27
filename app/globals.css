@@ -153,15 +153,59 @@
   .border-gradient-pink {
     @apply border-pink-200 hover:border-pink-300 transition-colors duration-200;
   }
-}
 
-/* Homepage custom media queries */
-
-@media (max-width: 1200px) {
-  .custom-flex-col {
-    @apply flex-col-reverse items-center justify-between gap-8;
+  .gold-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-gold-800),
+      0 0 5px var(--color-gold-300);
+    @apply text-gold-200;
   }
 
+  .pink-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-pink-800),
+      0 0 5px var(--color-pink-300);
+    @apply text-pink-100;
+  }
+
+  .white-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-white-800),
+      0 0 5px var(--color-white-500);
+    @apply text-white-300;
+  }
+
+  .green-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-green-200),
+      0 0 10px var(--color-green-500);
+  }
+  .pink-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-pink-200),
+      0 0 10px var(--color-pink-500);
+  }
+
+  /* Clip path Bosons */
+  .clip-path-star {
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+}
+
+/* Hero custom media queries */
+
+@media (max-width: 1200px) {
   .custom-text-align {
     @apply text-center items-center;
   }
@@ -185,5 +229,11 @@
 
   .custom-margin {
     @apply ml-40;
+  }
+}
+
+@media (max-width: 639px) {
+  .custom-item-alignment {
+    @apply items-center;
   }
 }

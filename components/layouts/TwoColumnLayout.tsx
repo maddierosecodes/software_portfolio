@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface TwoColumnLayoutProps {
-  children: [React.ReactNode, React.ReactNode];
+  children: React.ReactNode;
   className?: string;
   leftColumnClassName?: string;
   rightColumnClassName?: string;
@@ -17,21 +17,24 @@ const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
   role,
   'aria-label': ariaLabel,
 }) => {
-  const [leftContent, rightContent] = children;
+  const childrenArray = React.Children.toArray(children);
+  const [firstChild, secondChild] = childrenArray;
 
   return (
     <section
-      className={`section-container custom-flex-col flex-between ${className}`}
+      className={`section-container flex flex-col-reverse xl:flex-row items-center justify-between gap-8 ${className}`}
       role={role}
       aria-label={ariaLabel}
     >
       <div
-        className={`content-width mt-10 flex flex-col items-center xl:items-start ${leftColumnClassName}`}
+        className={`content-width flex flex-col items-center xl:items-start justify-center ${leftColumnClassName} xl:order-none`}
       >
-        {leftContent}
+        {firstChild}
       </div>
-      <div className={`content-width flex-center ${rightColumnClassName}`}>
-        {rightContent}
+      <div
+        className={`content-width flex items-center justify-center ${rightColumnClassName} xl:order-none`}
+      >
+        {secondChild}
       </div>
     </section>
   );

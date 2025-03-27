@@ -1,8 +1,10 @@
+'use client';
 interface CallToActionButtonProps {
   text: string;
-  onClick?: () => void;
+  onClick: () => void;
   disabled?: boolean;
   ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function CallToActionButton({
@@ -10,9 +12,11 @@ export default function CallToActionButton({
   onClick,
   disabled = false,
   ariaLabel,
+  type = 'button',
 }: CallToActionButtonProps) {
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel || text}
@@ -24,6 +28,7 @@ export default function CallToActionButton({
         transition-all duration-200 ease-in-out
         hover:scale-105 hover:bg-gold-300
         active:scale-95
+        focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 focus:ring-offset-blue-700
         disabled:opacity-50 disabled:cursor-not-allowed
       `}
     >
