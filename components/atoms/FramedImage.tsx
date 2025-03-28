@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 
-type FrameShape = 'circle' | 'star' | 'square';
+type FrameShape = 'circle' | 'star' | 'square' | 'oblong';
 
 interface FramedImageProps {
   src: string | StaticImageData;
@@ -28,22 +28,26 @@ export default function FramedImage({
     circle: 'rounded-full',
     star: 'clip-path-star',
     square: 'rounded-lg',
+    oblong: 'rounded-md',
   };
+
+  const aspectRatioClass =
+    shape === 'oblong' ? 'aspect-[2.5/1]' : 'aspect-square';
 
   return (
     <div
-      className={`border-gradient-pink overflow-hidden bg-pink-200 p-2 pink-glow-box-shadow ${shapeClasses[shape]}`}
+      className={`border-gradient-pink overflow-hidden bg-pink-200 p-3 pink-glow-box-shadow ${shapeClasses[shape]}`}
       role={role}
       aria-label={alt}
     >
       <div
-        className={`overflow-hidden bg-blue-500 aspect-square ${sizeClasses[size]} ${shapeClasses[shape]}`}
+        className={`overflow-hidden bg-blue-500 ${sizeClasses[size]} ${shapeClasses[shape]} ${aspectRatioClass}`}
       >
         <Image
           src={src}
           alt={alt}
           width={500}
-          height={500}
+          height={250}
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full h-full object-cover"
