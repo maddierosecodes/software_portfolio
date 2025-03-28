@@ -2,6 +2,7 @@ import AboutHero from '@/components/organisms/AboutHero';
 import Services from '@/components/organisms/Services';
 import MyTech from '@/components/organisms/MyTech';
 import { Metadata } from 'next';
+import OtherSkills from '@/components/organisms/OtherSkills';
 
 export const metadata: Metadata = {
   title: 'About Me | Maddie Rose Codes',
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <AboutHero />
       <Services />
       <MyTech />
+      <OtherSkills />
     </main>
   );
 }

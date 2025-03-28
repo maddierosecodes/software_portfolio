@@ -7,6 +7,7 @@ interface TwoColumnLayoutProps {
   rightColumnClassName?: string;
   role?: string;
   'aria-label'?: string;
+  equalHeight?: boolean;
 }
 
 const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
@@ -16,24 +17,25 @@ const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
   rightColumnClassName = '',
   role,
   'aria-label': ariaLabel,
+  equalHeight = false,
 }) => {
   const childrenArray = React.Children.toArray(children);
   const [firstChild, secondChild] = childrenArray;
 
+  const containerClassName = equalHeight
+    ? `grid grid-cols-1 xl:grid-cols-2 gap-8 ${className}`
+    : `section-container flex flex-col-reverse xl:flex-row items-center justify-between gap-8 ${className}`;
+
+  const columnBaseClassName = equalHeight
+    ? 'flex flex-col'
+    : 'content-width flex items-center justify-center xl:order-none';
+
   return (
-    <section
-      className={`section-container flex flex-col-reverse xl:flex-row items-center justify-between gap-8 ${className}`}
-      role={role}
-      aria-label={ariaLabel}
-    >
-      <div
-        className={`content-width flex flex-col items-center  justify-center ${leftColumnClassName} xl:order-none`}
-      >
+    <section className={containerClassName} role={role} aria-label={ariaLabel}>
+      <div className={`${columnBaseClassName} ${leftColumnClassName}`}>
         {firstChild}
       </div>
-      <div
-        className={`content-width flex items-center justify-center ${rightColumnClassName} xl:order-none`}
-      >
+      <div className={`${columnBaseClassName} ${rightColumnClassName}`}>
         {secondChild}
       </div>
     </section>
