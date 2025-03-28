@@ -17,7 +17,7 @@ const SplashBannerLayout: React.FC<SplashBannerLayoutProps> = ({
 }) => {
   return (
     <section
-      className={`w-full py-4 bg-peach-900 text-white splash-glow my-2 ${className}`}
+      className={`w-full py-4 bg-peach-900 text-white peach-glow-box-shadow-large my-2 ${className}`}
       role={role}
       aria-label={ariaLabel}
     >

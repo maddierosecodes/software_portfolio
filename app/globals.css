@@ -175,6 +175,41 @@
     @apply text-white-300;
   }
 
+  .green-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-green-800),
+      0 0 5px var(--color-green-300);
+    @apply text-green-200;
+  }
+
+  .lightgreen-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-lightgreen-800),
+      0 0 5px var(--color-lightgreen-300);
+    @apply text-lightgreen-200;
+  }
+
+  .peach-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-peach-800),
+      0 0 5px var(--color-peach-300);
+    @apply text-peach-200;
+  }
+
+  .blue-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-blue-800),
+      0 0 5px var(--color-blue-300);
+    @apply text-blue-200;
+  }
+
+  .black-glow-text {
+    text-shadow:
+      1px 1px 2px var(--color-black-800),
+      0 0 5px var(--color-black-300);
+    @apply text-black-200;
+  }
+
   .green-glow-box-shadow {
     box-shadow:
       0 0 10px var(--color-green-200),
@@ -193,6 +228,85 @@
       0 0 10px var(--color-pink-500);
   }
 
+  .gold-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-gold-200),
+      0 0 10px var(--color-gold-500);
+  }
+
+  .white-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-white-200),
+      0 0 10px var(--color-white-500);
+  }
+
+  .lightgreen-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-lightgreen-200),
+      0 0 10px var(--color-lightgreen-500);
+  }
+
+  .peach-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-peach-200),
+      0 0 10px var(--color-peach-500);
+  }
+
+  .black-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-black-200),
+      0 0 10px var(--color-black-500);
+  }
+
+  /* Large glow variants */
+  .green-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-green-200),
+      0 0 30px var(--color-green-500);
+  }
+
+  .blue-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-blue-200),
+      0 0 30px var(--color-blue-400);
+  }
+
+  .pink-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-pink-200),
+      0 0 30px var(--color-pink-500);
+  }
+
+  .gold-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-gold-200),
+      0 0 30px var(--color-gold-500);
+  }
+
+  .white-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-white-200),
+      0 0 30px var(--color-white-500);
+  }
+
+  .lightgreen-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-lightgreen-200),
+      0 0 30px var(--color-lightgreen-500);
+  }
+
+  .peach-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-peach-200),
+      0 0 30px var(--color-peach-500);
+  }
+
+  .black-glow-box-shadow-large {
+    box-shadow:
+      0 0 20px var(--color-black-200),
+      0 0 30px var(--color-black-500);
+  }
+
   /* Clip path Bosons */
   .clip-path-star {
     clip-path: polygon(
@@ -207,13 +321,6 @@
       2% 35%,
       39% 35%
     );
-  }
-
-  /* Glow Effects */
-  .splash-glow {
-    box-shadow:
-      0 -15px 25px -5px var(--color-blue-300),
-      0 15px 25px -5px var(--color-blue-300);
   }
 }
 
