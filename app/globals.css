@@ -129,7 +129,7 @@
   }
 
   .section-container {
-    @apply mx-auto px-6 lg:px-10 pt-10 h-fit pb-20 max-w-7xl;
+    @apply mx-auto my-2 px-6 lg:px-10 py-10 h-fit max-w-7xl;
   }
 
   .content-width {
@@ -180,6 +180,13 @@
       0 0 10px var(--color-green-200),
       0 0 10px var(--color-green-500);
   }
+
+  .blue-glow-box-shadow {
+    box-shadow:
+      0 0 10px var(--color-blue-200),
+      0 0 10px var(--color-blue-400);
+  }
+
   .pink-glow-box-shadow {
     box-shadow:
       0 0 10px var(--color-pink-200),
