@@ -1,5 +1,6 @@
 import AboutHero from '@/components/organisms/AboutHero';
 import Services from '@/components/organisms/Services';
+import MyTech from '@/components/organisms/MyTech';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function AboutPage() {
     <main className="flex min-h-screen flex-col items-center justify-between">
       <AboutHero />
       <Services />
+      <MyTech />
     </main>
   );
 }

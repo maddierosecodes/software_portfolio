@@ -16,15 +16,17 @@ const SplashBannerLayout: React.FC<SplashBannerLayoutProps> = ({
   'aria-label': ariaLabel,
 }) => {
   return (
-    <footer
-      className={`w-full py-4 bg-gray-900 text-white ${className}`}
+    <section
+      className={`w-full py-4 bg-peach-900 text-white splash-glow my-2 ${className}`}
       role={role}
       aria-label={ariaLabel}
     >
       <div className={`container mx-auto px-4 ${contentClassName}`}>
-        <div className="text-center">{children}</div>
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
+          {children}
+        </div>
       </div>
-    </footer>
+    </section>
   );
 };
 

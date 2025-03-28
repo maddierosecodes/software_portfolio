@@ -3,7 +3,7 @@
 import Hero from '../molecules/Hero';
 import ThreeLayerTitleText from '../atoms/ThreeLayerTitleText';
 import CallToActionButton from '../atoms/CallToActionButton';
-import profilePic from '../../resources/profile.png';
+import profilePic from '../../public/resources/images/profile.png';
 
 export default function HomeHero() {
   return (

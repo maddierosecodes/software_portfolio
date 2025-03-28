@@ -208,6 +208,13 @@
       39% 35%
     );
   }
+
+  /* Glow Effects */
+  .splash-glow {
+    box-shadow:
+      0 -15px 25px -5px var(--color-blue-300),
+      0 15px 25px -5px var(--color-blue-300);
+  }
 }
 
 /* Hero custom media queries */
