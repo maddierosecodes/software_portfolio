@@ -27,7 +27,7 @@ const TwoColumnLayout: React.FC<TwoColumnLayoutProps> = ({
       aria-label={ariaLabel}
     >
       <div
-        className={`content-width flex flex-col items-center xl:items-start justify-center ${leftColumnClassName} xl:order-none`}
+        className={`content-width flex flex-col items-center  justify-center ${leftColumnClassName} xl:order-none`}
       >
         {firstChild}
       </div>
