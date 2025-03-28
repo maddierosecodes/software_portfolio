@@ -1,6 +1,6 @@
 import Hero from '../molecules/Hero';
 import TextContentBox from '../atoms/TextContentBox';
-import profilePic from '../../resources/profile.png';
+import profilePic from '../../public/resources/images/profile.png';
 
 export default function AboutHero() {
   return (
