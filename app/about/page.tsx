@@ -12,11 +12,43 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <AboutHero />
-      <Services />
-      <MyTech />
-      <OtherSkills />
-    </main>
+    <>
+      <main
+        id="main-content"
+        className="flex min-h-screen flex-col items-center justify-between"
+        role="main"
+      >
+        <AboutHero />
+        <Services />
+        <MyTech />
+        <OtherSkills />
+      </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Maddie Rose',
+            jobTitle: 'Full Stack Software Developer',
+            description:
+              'A full-stack software developer specialising in clean code, accessibility, and building tech that helps people.',
+            url: 'https://maddierosecodes.com/about',
+            sameAs: [
+              'https://maddierosecreates.com',
+              'https://maddierosewrites.com',
+            ],
+            knowsAbout: [
+              'Full Stack Development',
+              'Web Accessibility',
+              'Custom Web Applications',
+              'Tech Consultancy',
+              'CMS Development',
+              'E-Commerce Development',
+            ],
+          }),
+        }}
+      />
+    </>
   );
 }

@@ -1,10 +1,5 @@
 import Script from 'next/script';
-
-interface SchemaOrgData {
-  '@context': string;
-  '@type': string;
-  [key: string]: unknown;
-}
+import { SchemaOrgData } from '@/types/schema.types';
 
 interface StructuredDataProps {
   data: SchemaOrgData;

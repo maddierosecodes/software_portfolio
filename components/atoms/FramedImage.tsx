@@ -1,6 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-
-type FrameShape = 'circle' | 'star' | 'square' | 'oblong';
+import { FrameShape } from '@/types/schema.types';
 
 interface FramedImageProps {
   src: string | StaticImageData;

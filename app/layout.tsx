@@ -8,7 +8,7 @@ import { personSchema, websiteSchema } from '@/config/structuredData';
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  userScalable: true,
 };
 
 export const metadata: Metadata = {
@@ -95,11 +95,19 @@ export default function RootLayout({
         <StructuredData data={websiteSchema} />
       </head>
       <body className="bg-blue-700 min-h-screen flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-black focus:top-0 focus:left-0"
+        >
+          Skip to main content
+        </a>
         <Header />
         <main role="main" aria-label="Main content" className="flex-grow">
           {children}
         </main>
         <Footer />
+        <StructuredData data={personSchema} />
+        <StructuredData data={websiteSchema} />
       </body>
     </html>
   );
