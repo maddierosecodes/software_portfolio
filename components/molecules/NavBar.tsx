@@ -43,6 +43,9 @@ export default function NavBar({ items, className = '' }: NavBarProps) {
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
+          aria-label={
+            isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
+          }
         >
           <svg
             className="w-10 h-10 lg:hidden"

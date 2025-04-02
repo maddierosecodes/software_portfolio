@@ -43,7 +43,11 @@ export default function OtherSkills() {
   ];
 
   return (
-    <section className="section-container w-2/3">
+    <section
+      className="section-container w-2/3"
+      role="region"
+      aria-label="Freelancing Options"
+    >
       <div className="text-center mb-8">
         <h2 className="subtitle">More Freelancing Options</h2>
         <p className="body-text">You can also find me at...</p>

@@ -1,5 +1,6 @@
 import InfoCard from '../atoms/InfoCard';
 import ThreeColumnLayout from '../layouts/ThreeColumnLayout';
+import { groupArrayIntoChunks } from '../../utils/arrayUtils';
 
 type InfoContainerProps = {
   infoArray: {
@@ -7,14 +8,6 @@ type InfoContainerProps = {
     description: string;
     icon: React.ReactNode;
   }[];
-};
-
-const groupArrayIntoChunks = <T,>(array: T[], chunkSize: number): T[][] => {
-  const chunks: T[][] = [];
-  for (let i = 0; i < array.length; i += chunkSize) {
-    chunks.push(array.slice(i, i + chunkSize));
-  }
-  return chunks;
 };
 
 export default function InfoContainer({ infoArray }: InfoContainerProps) {
