@@ -21,9 +21,9 @@ export default function HomeHero() {
           bottomText="a Freelance Web & Software Dev"
         />
         <CallToActionButton
-          text="CTA Button"
+          text="View My Projects"
           onClick={() => {}}
-          ariaLabel="CTA Button - Maddie"
+          ariaLabel="View Maddie's portfolio projects"
         />
       </div>
     </Hero>

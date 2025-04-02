@@ -47,8 +47,9 @@ export default function FramedImage({
           src={src}
           alt={alt}
           width={500}
-          height={250}
+          height={500}
           priority={priority}
+          loading={priority ? 'eager' : 'lazy'}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full h-full object-cover"
           quality={85}

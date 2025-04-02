@@ -3,7 +3,7 @@ import TechIconsGrid from '../molecules/TechIconsGrid';
 
 export default function MyTech() {
   return (
-    <SplashBanner>
+    <SplashBanner role="region" aria-label="tech stack">
       <div className="lg:w-1/2">
         <h1 className="text-white-200 text-3xl font-bold mb-4">
           My Tech Stack

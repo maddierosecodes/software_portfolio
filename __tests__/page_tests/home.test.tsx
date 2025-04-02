@@ -30,7 +30,7 @@ describe('As a visitor, I am greeted by a hero section, with information about t
   });
   test('When I select the CTA button (nothing happens yet!)', async () => {
     const ctaButton = screen.getByRole('button', {
-      name: 'CTA Button - Maddie',
+      name: "View Maddie's portfolio projects",
     });
     expect(ctaButton).toBeInTheDocument();
     await userEvent.click(ctaButton);
@@ -38,7 +38,7 @@ describe('As a visitor, I am greeted by a hero section, with information about t
   });
   test('When I use a keyboard, I can navigate to and focus the CTA button', async () => {
     const ctaButton = screen.getByRole('button', {
-      name: 'CTA Button - Maddie',
+      name: "View Maddie's portfolio projects",
     });
     ctaButton.focus();
     expect(ctaButton).toHaveFocus();
