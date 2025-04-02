@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2024-03-30
+
+### Added
+
+- Enhanced About Me page with additional content sections:
+  - Personal introduction and professional background
+  - Services section showcasing development expertise
+  - Technical skills and technologies section
+  - Additional skills and capabilities section
+  - Structured data implementation for SEO
+
 ## [0.5.0] - 2024-03-29
 
 ### Added
