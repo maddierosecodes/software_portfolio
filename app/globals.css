@@ -157,22 +157,25 @@
   .gold-glow-text {
     text-shadow:
       1px 1px 2px var(--color-gold-800),
-      0 0 5px var(--color-gold-300);
-    @apply text-gold-200;
+      0 0 5px var(--color-gold-300),
+      0 0 10px var(--color-gold-200);
+    @apply text-gold-100;
   }
 
   .pink-glow-text {
     text-shadow:
       1px 1px 2px var(--color-pink-800),
-      0 0 5px var(--color-pink-300);
-    @apply text-pink-100;
+      0 0 5px var(--color-pink-300),
+      0 0 10px var(--color-pink-200);
+    @apply text-pink-50;
   }
 
   .white-glow-text {
     text-shadow:
       1px 1px 2px var(--color-white-800),
-      0 0 5px var(--color-white-500);
-    @apply text-white-300;
+      0 0 5px var(--color-white-300),
+      0 0 10px var(--color-white-200);
+    @apply text-white-100;
   }
 
   .green-glow-text {
