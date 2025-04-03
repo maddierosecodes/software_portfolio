@@ -1,14 +1,25 @@
 import InteractiveCard from '../atoms/InteractiveCard';
 import CardGridLayout from '../layouts/CardGridLayout';
-import { InteractiveContainerProps } from '@/types/schema.types';
+import { InteractiveCardProps } from '@/types/component.types';
+
+interface InteractiveContainerProps {
+  infoArray: Omit<InteractiveCardProps, 'role' | 'aria-label'>[];
+}
 
 export default function InteractiveContainer({
   infoArray,
 }: InteractiveContainerProps) {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4">
+    <section
+      className="w-full max-w-7xl mx-auto px-4"
+      aria-labelledby="projects-heading"
+      itemScope
+      itemType="https://schema.org/ItemList"
+    >
       <div className="mb-8 text-center xl:text-start">
-        <h2 className="subtitle">My Projects</h2>
+        <h2 id="projects-heading" className="subtitle">
+          My Projects
+        </h2>
         <p className="body-text">
           Take a look at what I&apos;ve been working on!
         </p>
@@ -23,6 +34,11 @@ export default function InteractiveContainer({
             githubLink={info.githubLink}
             image={info.image}
             video={info.video}
+            role="article"
+            aria-label={`Project: ${info.title}`}
+            itemProp="itemListElement"
+            itemScope
+            itemType="https://schema.org/ListItem"
           />
         ))}
       </CardGridLayout>

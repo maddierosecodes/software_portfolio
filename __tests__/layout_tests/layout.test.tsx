@@ -28,8 +28,13 @@ describe('As a visitor, I can see the site header with navigation', () => {
   });
 
   test('When I open any page, I see the current page title in the header', () => {
-    const pageTitle = screen.getByRole('heading', { level: 2 });
-    expect(pageTitle).toHaveTextContent('Home');
+    const siteTitle = screen.getByRole('heading', { level: 1 });
+    expect(siteTitle).toHaveTextContent('MaddieRoseCodes');
+    expect(siteTitle).toHaveAttribute('aria-label', 'MaddieRoseCodes - Home');
+
+    const pageTitle = screen.getByText('Home', {
+      selector: 'p[aria-label="Current page: Home"]',
+    });
     expect(pageTitle).toHaveAttribute('aria-label', 'Current page: Home');
   });
 

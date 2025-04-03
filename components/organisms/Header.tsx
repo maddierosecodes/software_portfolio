@@ -18,9 +18,12 @@ function Header() {
     >
       <h1 aria-label="MaddieRoseCodes - Home">MaddieRoseCodes</h1>
 
-      <h2 aria-label={`Current page: ${getCurrentPageTitle(currentPage)}`}>
+      <p
+        className="subtitle text-[clamp(1.5rem,2vw,2.5rem)] mx-2"
+        aria-label={`Current page: ${getCurrentPageTitle(currentPage)}`}
+      >
         {getCurrentPageTitle(currentPage)}
-      </h2>
+      </p>
 
       <NavBar items={routes} />
     </HeaderLayout>
