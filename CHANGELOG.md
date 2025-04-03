@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.2] - 2024-04-03
+
+### Added
+
+- New Projects page implementation:
+  - Interactive project cards with video support
+  - Structured data implementation for SEO
+  - Comprehensive test coverage for projects page
+  - Responsive grid layout for project display
+  - Project highlighting on homepage
+  - Accessibility improvements for project cards
+  - Integration with GitHub repositories
+  - Video demonstration support using YouTube embeds
+
+### Changed
+
+- Updated atomic design documentation to include new components:
+  - InteractiveCard atom for project display
+  - InteractiveContainer molecule for project lists
+  - ProjectsList organism for project management
+  - CardGridLayout for responsive project grids
+- Enhanced homepage with project highlight section
+- Improved navigation with projects page integration
+
+### Fixed
+
+- Accessibility issues in project cards
+- Responsive layout issues in project grid
+- SEO metadata for projects page
+- Structured data implementation for project listings
+
 ## [0.5.1] - 2024-03-30
 
 ### Added
