@@ -3,8 +3,8 @@ import ThreeColumnLayout from '../layouts/ThreeColumnLayout';
 import { groupArrayIntoChunks } from '../../utils/arrayUtils';
 import { InfoContainerProps } from '@/types/schema.types';
 
-export default function InfoContainer(props: InfoContainerProps) {
-  const groupedItems = groupArrayIntoChunks(props.infoArray, 3);
+export default function InfoContainer({ infoArray }: InfoContainerProps) {
+  const groupedItems = groupArrayIntoChunks(infoArray, 3);
 
   return (
     <section className="section-container max-w-7xl">

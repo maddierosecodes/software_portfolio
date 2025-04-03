@@ -17,11 +17,11 @@ const SplashBannerLayout: React.FC<SplashBannerLayoutProps> = ({
 }) => {
   return (
     <section
-      className={`w-full py-4 bg-peach-900 text-white peach-glow-box-shadow-large my-2 ${className}`}
+      className={`relative left-[calc(-50vw+50%)] w-screen py-4 bg-peach-900 text-white peach-glow-box-shadow-large my-2 ${className}`}
       role={role}
       aria-label={ariaLabel}
     >
-      <div className={`container mx-auto px-4 ${contentClassName}`}>
+      <div className={`px-4 mx-auto max-w-7xl ${contentClassName}`}>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8">
           {children}
         </div>
