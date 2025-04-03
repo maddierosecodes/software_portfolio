@@ -4,8 +4,10 @@ import Hero from '../molecules/Hero';
 import ThreeLayerTitleText from '../atoms/ThreeLayerTitleText';
 import CallToActionButton from '../atoms/CallToActionButton';
 import profilePic from '../../public/resources/images/profile.png';
+import { useRouter } from 'next/navigation';
 
 export default function HomeHero() {
+  const router = useRouter();
   return (
     <Hero
       imageSrc={profilePic}
@@ -22,7 +24,7 @@ export default function HomeHero() {
         />
         <CallToActionButton
           text="View My Projects"
-          onClick={() => {}}
+          onClick={() => router.push('/projects')}
           ariaLabel="View Maddie's portfolio projects"
         />
       </div>

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import HomeHero from '@/components/organisms/HomeHero';
 import { Metadata } from 'next';
-
+import ProjectHighlight from '@/components/organisms/ProjectHighlight';
 export const metadata: Metadata = {
   title: 'Home',
   description:
@@ -20,6 +20,7 @@ const Home: FC = () => {
   return (
     <main role="main" aria-label="Home page content">
       <HomeHero />
+      <ProjectHighlight />
     </main>
   );
 };
