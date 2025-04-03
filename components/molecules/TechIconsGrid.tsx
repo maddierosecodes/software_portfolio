@@ -28,7 +28,7 @@ const TechIconsGrid: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 p-4 bg-peach-800/50 rounded-lg">
+    <div className="w-full grid grid-cols-3 lg:grid-cols-4 gap-1 lg:gap-4 py-3 px-2 lg:p-6 bg-peach-800/50 rounded-lg">
       {techIcons.map((tech) => (
         <TechIcon key={tech.name} {...tech} />
       ))}

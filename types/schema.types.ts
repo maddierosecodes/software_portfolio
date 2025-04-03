@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export interface SchemaOrgData {
   '@context': string;
   '@type': string;
@@ -14,4 +16,17 @@ export interface InfoContainerItem {
 
 export interface InfoContainerProps {
   infoArray: InfoContainerItem[];
+}
+
+export interface InteractiveContainerItem {
+  title: string;
+  description: string;
+  link: string;
+  githubLink: string;
+  image: StaticImageData;
+  video: string;
+}
+
+export interface InteractiveContainerProps {
+  infoArray: InteractiveContainerItem[];
 }

@@ -129,11 +129,11 @@
   }
 
   .section-container {
-    @apply mx-auto my-2 px-6 lg:px-10 py-10 h-fit max-w-7xl;
+    @apply xl:mx-auto my-2 px-6 lg:px-10 py-10 h-fit max-w-7xl;
   }
 
   .content-width {
-    @apply w-full lg:w-[45%] max-w-2xl;
+    @apply w-full xl:w-[45%] max-w-2xl;
   }
 
   /* Spacing Bosons */

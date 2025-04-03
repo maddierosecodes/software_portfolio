@@ -44,7 +44,7 @@ export default function OtherSkills() {
 
   return (
     <section
-      className="section-container w-2/3"
+      className="section-container sm:w-2/3"
       role="region"
       aria-label="Freelancing Options"
     >

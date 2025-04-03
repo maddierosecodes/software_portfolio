@@ -24,7 +24,7 @@ const ThreeColumnLayout: React.FC<ThreeColumnLayoutProps> = ({
 
   return (
     <section
-      className={`section-container flex flex-col-reverse xl:flex-row items-center justify-between gap-8 ${className}`}
+      className={`section-container flex flex-col-reverse lg:flex-row items-center justify-between gap-8 ${className}`}
       role={role}
       aria-label={ariaLabel}
     >
