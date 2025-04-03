@@ -14,33 +14,6 @@ export default function ProjectsList() {
           image: maddierosecodes,
           video: 'xvFZjo5PgG0',
         },
-        {
-          title: 'Maddie Rose Codes',
-          description:
-            'My personal website, built with Next.js, Tailwind CSS, and TypeScript.',
-          link: 'https://maddierosecodes.com',
-          githubLink: 'https://github.com/maddierosecodes/software_portfolio',
-          image: maddierosecodes,
-          video: 'xvFZjo5PgG0',
-        },
-        {
-          title: 'Maddie Rose Codes',
-          description:
-            'My personal website, built with Next.js, Tailwind CSS, and TypeScript.',
-          link: 'https://maddierosecodes.com',
-          githubLink: 'https://github.com/maddierosecodes/software_portfolio',
-          image: maddierosecodes,
-          video: 'xvFZjo5PgG0',
-        },
-        {
-          title: 'Maddie Rose Codes',
-          description:
-            'My personal website, built with Next.js, Tailwind CSS, and TypeScript.',
-          link: 'https://maddierosecodes.com',
-          githubLink: 'https://github.com/maddierosecodes/software_portfolio',
-          image: maddierosecodes,
-          video: 'xvFZjo5PgG0',
-        },
       ]}
     />
   );
