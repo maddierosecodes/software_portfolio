@@ -34,7 +34,6 @@ export default function InteractiveContainer({
             githubLink={info.githubLink}
             image={info.image}
             video={info.video}
-            role="article"
             aria-label={`Project: ${info.title}`}
             itemProp="itemListElement"
             itemScope
