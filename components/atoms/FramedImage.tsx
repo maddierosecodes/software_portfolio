@@ -20,7 +20,7 @@ export default function FramedImage({
 }: FramedImageProps) {
   const sizeClasses = {
     default: 'w-[clamp(8rem,20vw,14rem)]',
-    large: 'w-[clamp(8rem,30vw,14rem)] lg:w-[clamp(14rem,40vw,22rem)]',
+    large: 'w-[clamp(12rem,35vw,28rem)] xl:w-[clamp(16rem,30vw,32rem)]',
   };
 
   const shapeClasses = {

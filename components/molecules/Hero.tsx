@@ -11,6 +11,7 @@ type HeroProps = {
   imageShape: 'circle' | 'star' | 'square';
   children: React.ReactNode;
   priority?: boolean;
+  className?: string;
 };
 
 export default function Hero(props: HeroProps) {
@@ -21,6 +22,7 @@ export default function Hero(props: HeroProps) {
     imageShape,
     children,
     priority = false,
+    className = '',
   } = props;
 
   const imageContent = (
@@ -42,6 +44,7 @@ export default function Hero(props: HeroProps) {
       aria-label="Hero section"
       leftColumnClassName={imagePosition === 'right' ? 'order-1' : 'order-2'}
       rightColumnClassName={imagePosition === 'right' ? 'order-2' : 'order-1'}
+      className={className}
     >
       {imagePosition === 'left' ? imageContent : children}
       {imagePosition === 'right' ? imageContent : children}

@@ -105,7 +105,7 @@ export default function RootLayout({
         <main
           role="main"
           aria-label="Main content"
-          className="flex-grow flex justify-center items-center mx-0 xl:mx-[10%] px-4 sm:px-10 pt-10 h-fit pb-20 custom-flex-col"
+          className="flex-grow flex justify-center items-center mx-4 sm:mx-10 lg:mx-16 xl:mx-24 2xl:mx-32 pt-10 h-fit pb-20 custom-flex-col"
         >
           {children}
         </main>
