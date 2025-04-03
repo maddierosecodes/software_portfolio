@@ -97,15 +97,19 @@ export default function RootLayout({
       <body className="bg-blue-700 min-h-screen flex flex-col">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-black focus:top-0 focus:left-0"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-black focus:top-0 focus:left-0 focus:border-2 focus:border-black focus:rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          aria-label="Skip to main content"
+          tabIndex={0}
         >
           Skip to main content
         </a>
         <Header />
         <main
+          id="main-content"
           role="main"
           aria-label="Main content"
           className="flex-grow flex justify-center items-center mx-4 sm:mx-10 lg:mx-16 xl:mx-24 2xl:mx-32 pt-10 h-fit pb-20 custom-flex-col"
+          tabIndex={-1}
         >
           {children}
         </main>

@@ -26,12 +26,12 @@ export default function ThreeLayerTitleText({
       >
         {mainText}
       </h1>
-      <h3
+      <h2
         className="body-text w-full pb-5 pink-glow-text"
         aria-label={bottomText}
       >
         <i>{bottomText}</i>
-      </h3>
+      </h2>
     </div>
   );
 }
