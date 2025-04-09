@@ -23,7 +23,7 @@ export default function FormInput({
 }: FormInputProps) {
   return (
     <input
-      className={`form-input ${hasError ? 'border-red-500' : ''} ${className}`}
+      className={`form-input ${hasError && 'border-red-500'} ${className}`}
       type={type}
       id={id}
       name={name}

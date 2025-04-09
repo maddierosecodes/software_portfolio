@@ -147,17 +147,29 @@ export const ContactForm = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormState((prev) => ({
-      ...prev,
-      formData: {
-        ...prev.formData,
-        [field]: value,
-      },
-      validationMessages: {
-        ...prev.validationMessages,
-        [field]: '',
-      },
-    }));
+    setFormState((prev) => {
+      const newState = {
+        ...prev,
+        formData: {
+          ...prev.formData,
+          [field]: value,
+        },
+        validationMessages: {
+          ...prev.validationMessages,
+          [field]: '',
+        },
+      };
+
+      // Validate email in real-time
+      if (field === 'email' && value) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          newState.validationMessages.email =
+            'Please enter a valid email address';
+        }
+      }
+
+      return newState;
+    });
   };
 
   return (
