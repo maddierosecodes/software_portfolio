@@ -36,6 +36,8 @@ jobs:
         run: npm install
 
       - name: Build Next.js App
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: npm run build
 
       - name: Upload to Cloudways via SSH
@@ -53,39 +55,28 @@ jobs:
             -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
             ./ $USERNAME@$SERVER_IP:/home/master/applications/$CLOUDWAYS_APP_ID/public_html
 
-      - name: Create .env.local file on server
+      - name: Restart PM2 Process with Environment Variables
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
           SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
           USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
           CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-          # Create .env.local file content
-          cat > .env.local << EOF
-          RESEND_API_KEY=$RESEND_API_KEY
-          EOF
-
-          # Upload .env.local file to server
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa .env.local $USERNAME@$SERVER_IP:/home/master/applications/$CLOUDWAYS_APP_ID/public_html/
-
-      - name: Restart PM2 Process
-        env:
-          SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
-          USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
-          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USERNAME@$SERVER_IP << 'EOF'
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USERNAME@$SERVER_IP << EOF
+            export NVM_DIR="\$HOME/.nvm"
+            [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"
             cd /home/master/applications/$CLOUDWAYS_APP_ID/public_html
             npm install --omit=dev
             npm install -g pm2
-            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+            
+            # Stop the existing process if it exists
+            pm2 stop nextjs-app || true
+            pm2 delete nextjs-app || true
+            
+            # Start the process with environment variables
+            RESEND_API_KEY=$RESEND_API_KEY pm2 start npm --name "nextjs-app" -- start
+            
+            # Save the PM2 configuration
             pm2 save
           EOF
 
