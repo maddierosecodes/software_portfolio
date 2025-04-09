@@ -17,6 +17,8 @@ on:
         required: true
       CLOUDWAYS_SERVER_ID:
         required: true
+      RESEND_API_KEY:
+        required: true
 
 jobs:
   deploy:
@@ -50,6 +52,26 @@ jobs:
             --exclude '.next/cache' --exclude '.htaccess' --exclude 'index.php' --exclude 'output.log' \
             -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
             ./ $USERNAME@$SERVER_IP:/home/master/applications/$CLOUDWAYS_APP_ID/public_html
+
+      - name: Create .env.local file on server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
+          SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
+          USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
+          CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # Create .env.local file content
+          cat > .env.local << EOF
+          RESEND_API_KEY=$RESEND_API_KEY
+          EOF
+
+          # Upload .env.local file to server
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa .env.local $USERNAME@$SERVER_IP:/home/master/applications/$CLOUDWAYS_APP_ID/public_html/
 
       - name: Restart PM2 Process
         env:
