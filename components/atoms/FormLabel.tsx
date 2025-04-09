@@ -4,12 +4,14 @@ interface FormLabelProps {
   htmlFor: string;
   children: React.ReactNode;
   className?: string;
+  required?: boolean;
 }
 
 export default function FormLabel({
   htmlFor,
   children,
   className = '',
+  required = false,
 }: FormLabelProps) {
   return (
     <label
@@ -17,6 +19,11 @@ export default function FormLabel({
       htmlFor={htmlFor}
     >
       {children}
+      {required && (
+        <span className="text-red-500 ml-1" aria-hidden="true">
+          *
+        </span>
+      )}
     </label>
   );
 }

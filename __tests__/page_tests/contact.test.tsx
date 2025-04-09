@@ -33,9 +33,11 @@ describe('As a visitor, I can interact with the contact form', () => {
 
   test('When I open the contact page, I see the contact form', () => {
     expect(screen.getByText('Get in Touch!')).toBeInTheDocument();
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
-    expect(screen.getByLabelText('Email')).toBeInTheDocument();
-    expect(screen.getByLabelText('Message')).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: /name/i })).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: /email/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', { name: /message/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Submit' })).toBeInTheDocument();
   });
 
@@ -49,7 +51,7 @@ describe('As a visitor, I can interact with the contact form', () => {
   });
 
   test('When I enter an invalid email, I see a validation error', async () => {
-    const emailInput = screen.getByLabelText('Email');
+    const emailInput = screen.getByRole('textbox', { name: /email/i });
     await userEvent.type(emailInput, 'invalid-email');
 
     const submitButton = screen.getByRole('button', { name: 'Submit' });
@@ -76,10 +78,16 @@ describe('As a visitor, I can interact with the contact form', () => {
     });
 
     // Fill in the form
-    await userEvent.type(screen.getByLabelText('Name'), 'John Doe');
-    await userEvent.type(screen.getByLabelText('Email'), 'john@example.com');
     await userEvent.type(
-      screen.getByLabelText('Message'),
+      screen.getByRole('textbox', { name: /name/i }),
+      'John Doe',
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /email/i }),
+      'john@example.com',
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /message/i }),
       'Hello, this is a test message',
     );
 
@@ -123,10 +131,16 @@ describe('As a visitor, I can interact with the contact form', () => {
     });
 
     // Fill in the form
-    await userEvent.type(screen.getByLabelText('Name'), 'John Doe');
-    await userEvent.type(screen.getByLabelText('Email'), 'john@example.com');
     await userEvent.type(
-      screen.getByLabelText('Message'),
+      screen.getByRole('textbox', { name: /name/i }),
+      'John Doe',
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /email/i }),
+      'john@example.com',
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: /message/i }),
       'Hello, this is a test message',
     );
 
@@ -145,9 +159,9 @@ describe('As a visitor, I can interact with the contact form', () => {
   });
 
   test('When I use a keyboard, I can navigate to and focus all form fields', async () => {
-    const nameInput = screen.getByLabelText('Name');
-    const emailInput = screen.getByLabelText('Email');
-    const messageInput = screen.getByLabelText('Message');
+    const nameInput = screen.getByRole('textbox', { name: /name/i });
+    const emailInput = screen.getByRole('textbox', { name: /email/i });
+    const messageInput = screen.getByRole('textbox', { name: /message/i });
     const submitButton = screen.getByRole('button', { name: 'Submit' });
 
     // Focus each element

@@ -6,6 +6,7 @@ interface FormButtonProps {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  'aria-busy'?: boolean;
 }
 
 export default function FormButton({
@@ -14,6 +15,7 @@ export default function FormButton({
   onClick,
   className = '',
   disabled = false,
+  'aria-busy': ariaBusy = false,
 }: FormButtonProps) {
   return (
     <button
@@ -21,6 +23,8 @@ export default function FormButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
+      aria-busy={ariaBusy}
+      aria-disabled={disabled}
     >
       {text}
     </button>

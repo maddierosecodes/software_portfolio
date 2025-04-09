@@ -15,6 +15,7 @@ interface FormFieldProps {
   ) => void;
   errorMessage?: string;
   isTextArea?: boolean;
+  required?: boolean;
   textAreaProps?: {
     minHeight?: string;
     maxHeight?: string;
@@ -30,11 +31,14 @@ export default function FormField({
   onChange,
   errorMessage = '',
   isTextArea = false,
+  required = false,
   textAreaProps = {},
 }: FormFieldProps) {
   return (
     <div className="flex flex-col gap-1 group">
-      <FormLabel htmlFor={id}>{label}</FormLabel>
+      <FormLabel htmlFor={id} required={required}>
+        {label}
+      </FormLabel>
 
       {isTextArea ? (
         <FormTextArea
@@ -46,6 +50,7 @@ export default function FormField({
             onChange as (e: React.ChangeEvent<HTMLTextAreaElement>) => void
           }
           hasError={!!errorMessage}
+          required={required}
           minHeight={textAreaProps.minHeight}
           maxHeight={textAreaProps.maxHeight}
         />
@@ -60,11 +65,14 @@ export default function FormField({
             onChange as (e: React.ChangeEvent<HTMLInputElement>) => void
           }
           hasError={!!errorMessage}
+          required={required}
         />
       )}
 
       {errorMessage && (
-        <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
+        <p className="text-red-500 text-sm mt-1" id={`${id}-error`}>
+          {errorMessage}
+        </p>
       )}
     </div>
   );

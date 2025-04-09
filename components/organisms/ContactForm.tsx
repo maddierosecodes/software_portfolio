@@ -183,9 +183,15 @@ export const ContactForm = () => {
         <form
           className="flex flex-col gap-4 form-container p-4 md:p-6 w-full sm:w-4/5 lg:w-2/3 min-h-0"
           onSubmit={handleSubmit}
+          aria-label="Contact form"
+          noValidate
         >
           {formState.error instanceof AdminError && (
-            <div className="text-red-500 text-sm mb-2">
+            <div
+              className="text-red-500 text-sm mb-2"
+              role="alert"
+              aria-live="polite"
+            >
               <p>An Unexpected Error Has Occured. Please Try Again Later.</p>
             </div>
           )}
@@ -198,6 +204,7 @@ export const ContactForm = () => {
             value={formState.formData.name}
             onChange={(e) => handleInputChange('name', e.target.value)}
             errorMessage={formState.validationMessages.name}
+            required
           />
 
           <FormField
@@ -208,6 +215,7 @@ export const ContactForm = () => {
             value={formState.formData.email}
             onChange={(e) => handleInputChange('email', e.target.value)}
             errorMessage={formState.validationMessages.email}
+            required
           />
 
           <FormField
@@ -219,11 +227,13 @@ export const ContactForm = () => {
             onChange={(e) => handleInputChange('message', e.target.value)}
             errorMessage={formState.validationMessages.message}
             isTextArea={true}
+            required
           />
 
           <FormButton
             text={formState.isSubmitting ? 'Sending...' : 'Submit'}
             disabled={formState.isSubmitting}
+            aria-busy={formState.isSubmitting}
           />
         </form>
       )}

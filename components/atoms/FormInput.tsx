@@ -8,6 +8,7 @@ interface FormInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   hasError?: boolean;
+  required?: boolean;
   className?: string;
 }
 
@@ -19,17 +20,22 @@ export default function FormInput({
   value,
   onChange,
   hasError = false,
+  required = false,
   className = '',
 }: FormInputProps) {
   return (
     <input
-      className={`form-input ${hasError && 'border-red-500'} ${className}`}
+      className={`form-input ${hasError ? 'border-red-500' : ''} ${className}`}
       type={type}
       id={id}
       name={name}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      required={required}
+      aria-required={required}
+      aria-invalid={hasError}
+      aria-describedby={hasError ? `${id}-error` : undefined}
     />
   );
 }
