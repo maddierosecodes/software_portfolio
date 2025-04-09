@@ -25,3 +25,4 @@ jobs:
       CLOUDWAYS_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
       CLOUDWAYS_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
       CLOUDWAYS_SERVER_ID: ${{ secrets.CLOUDWAYS_SERVER_ID }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
