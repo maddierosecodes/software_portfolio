@@ -20,10 +20,10 @@ A modern, responsive portfolio website built with Next.js, React, and TailwindCS
 - 🎯 SEO-friendly
 - 📱 Mobile-first approach
 - 🧪 Comprehensive test coverage
-- 🎭 Dark/Light mode support
 - 📝 Blog section
 - 🔍 Search functionality
 - 👤 About Me section
+- 📧 Contact form with API integration
 
 ## Tech Stack
 
@@ -89,10 +89,13 @@ Before you begin, ensure you have the following installed:
 software_portfolio/
 ├── __tests__/               # Test files
 ├── app/                    # Next.js app directory
+│   ├── api/               # API routes for form submissions and data handling
 ├── components/            # Atomic reusable React components
 ├── config/               # Configuration Files
-├── resources/               # Static Assets
+├── public/               # Static Assets
 └── types/               # TypeScript type definitions
+└── utils/               # Utility functions
+
 ```
 
 ## Folder Structure Guide

@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2024-04-09
+
+### Added
+
+- New Contact page implementation:
+  - Contact form with form validation
+  - API endpoint for form submission
+  - Success and error handling
+  - Responsive design implementation
+  - Accessibility features
+  - Form validation feedback
+  - Loading states for form submission
+  - Integration with email service
+
+### Changed
+
+- Updated documentation to include contact page implementation details
+- Enhanced form handling and validation across the application
+
+### Fixed
+
+- Form submission handling
+- Input validation feedback
+- Loading state management
+
 ## [0.5.2] - 2024-04-03
 
 ### Added
