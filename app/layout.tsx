@@ -108,7 +108,7 @@ export default function RootLayout({
           id="main-content"
           role="main"
           aria-label="Main content"
-          className="flex-grow flex justify-center items-center mx-4 sm:mx-10 lg:mx-16 xl:mx-24 2xl:mx-32 pt-10 h-fit pb-20 custom-flex-col"
+          className="flex-grow flex justify-center items-center mx-auto w-[95%] sm:w-[90%] lg:w-[85%] xl:w-[80%] 2xl:w-[75%] pt-10 h-fit pb-20 custom-flex-col"
           tabIndex={-1}
         >
           {children}

@@ -185,14 +185,16 @@ export const ContactForm = () => {
           onSubmit={handleSubmit}
           aria-label="Contact form"
           noValidate
+          itemScope
+          itemType="https://schema.org/ContactForm"
         >
           {formState.error instanceof AdminError && (
             <div
               className="text-red-500 text-sm mb-2"
               role="alert"
-              aria-live="polite"
+              aria-live="assertive"
             >
-              <p>An Unexpected Error Has Occured. Please Try Again Later.</p>
+              <p>An Unexpected Error Has Occurred. Please Try Again Later.</p>
             </div>
           )}
 
@@ -205,6 +207,7 @@ export const ContactForm = () => {
             onChange={(e) => handleInputChange('name', e.target.value)}
             errorMessage={formState.validationMessages.name}
             required
+            itemProp="name"
           />
 
           <FormField
@@ -216,6 +219,7 @@ export const ContactForm = () => {
             onChange={(e) => handleInputChange('email', e.target.value)}
             errorMessage={formState.validationMessages.email}
             required
+            itemProp="email"
           />
 
           <FormField
@@ -228,6 +232,7 @@ export const ContactForm = () => {
             errorMessage={formState.validationMessages.message}
             isTextArea={true}
             required
+            itemProp="message"
           />
 
           <FormButton

@@ -20,6 +20,7 @@ interface FormFieldProps {
     minHeight?: string;
     maxHeight?: string;
   };
+  itemProp?: string;
 }
 
 export default function FormField({
@@ -33,6 +34,7 @@ export default function FormField({
   isTextArea = false,
   required = false,
   textAreaProps = {},
+  itemProp,
 }: FormFieldProps) {
   return (
     <div className="flex flex-col gap-1 group">
@@ -53,6 +55,7 @@ export default function FormField({
           required={required}
           minHeight={textAreaProps.minHeight}
           maxHeight={textAreaProps.maxHeight}
+          itemProp={itemProp}
         />
       ) : (
         <FormInput
@@ -66,6 +69,7 @@ export default function FormField({
           }
           hasError={!!errorMessage}
           required={required}
+          itemProp={itemProp}
         />
       )}
 

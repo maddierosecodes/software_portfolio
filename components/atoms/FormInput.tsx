@@ -10,6 +10,7 @@ interface FormInputProps {
   hasError?: boolean;
   required?: boolean;
   className?: string;
+  itemProp?: string;
 }
 
 export default function FormInput({
@@ -22,6 +23,7 @@ export default function FormInput({
   hasError = false,
   required = false,
   className = '',
+  itemProp,
 }: FormInputProps) {
   return (
     <input
@@ -36,6 +38,7 @@ export default function FormInput({
       aria-required={required}
       aria-invalid={hasError}
       aria-describedby={hasError ? `${id}-error` : undefined}
+      itemProp={itemProp}
     />
   );
 }

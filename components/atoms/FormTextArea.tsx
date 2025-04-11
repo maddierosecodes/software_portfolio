@@ -12,6 +12,7 @@ interface FormTextAreaProps {
   required?: boolean;
   minHeight?: string;
   maxHeight?: string;
+  itemProp?: string;
 }
 
 const FormTextArea: React.FC<FormTextAreaProps> = ({
@@ -24,6 +25,7 @@ const FormTextArea: React.FC<FormTextAreaProps> = ({
   required = false,
   minHeight = '100px',
   maxHeight = '300px',
+  itemProp,
 }) => {
   return (
     <textarea
@@ -42,6 +44,7 @@ const FormTextArea: React.FC<FormTextAreaProps> = ({
       aria-required={required}
       aria-invalid={hasError}
       aria-describedby={hasError ? `${id}-error` : undefined}
+      itemProp={itemProp}
     />
   );
 };
