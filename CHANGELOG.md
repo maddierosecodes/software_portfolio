@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1] - 2024-04-11
+
+### Added
+
+- Enhanced Contact page with comprehensive contact information section:
+  - Professional contact details including email and CV
+  - Social media links (Facebook, LinkedIn, Etsy, Instagram, Upwork, Fiverr)
+  - Review submission link
+  - Improved accessibility with ARIA attributes
+  - Enhanced SEO metadata
+  - Responsive two-column layout
+  - External link handling with security attributes
+
+### Changed
+
+- Updated contact page layout for better content organisation
+- Enhanced form components with structured data attributes
+- Improved error message handling in contact form
+
 ## [0.6.0] - 2024-04-09
 
 ### Added
@@ -18,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Form validation feedback
   - Loading states for form submission
   - Integration with email service
+  - Contact information section with professional details
 
 ### Changed
 
