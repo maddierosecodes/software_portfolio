@@ -6,6 +6,7 @@ import FormSection from '../molecules/FormSection';
 import SuccessMessage from '../molecules/SuccessMessage';
 import FormButton from '../atoms/FormButton';
 import { AdminError, ClientError } from '@/config/errors/emailErrors';
+import Link from 'next/link';
 
 export const ContactForm = () => {
   const [formState, setFormState] = useState<{
@@ -240,8 +241,25 @@ export const ContactForm = () => {
             disabled={formState.isSubmitting}
             aria-busy={formState.isSubmitting}
           />
+
+          <p
+            className="text-sm text-center mt-4 text-blue-300"
+            role="contentinfo"
+          >
+            By submitting this form, you agree to our{' '}
+            <Link
+              href="/privacy-policy"
+              className="text-blue-200 hover:text-blue-300 transition-colors duration-200"
+              aria-label="View our Privacy Policy"
+              title="Privacy Policy"
+            >
+              Privacy Policy
+            </Link>
+          </p>
         </form>
       )}
     </FormSection>
   );
 };
+
+export default ContactForm;

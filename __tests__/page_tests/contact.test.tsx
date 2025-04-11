@@ -184,6 +184,22 @@ describe('As a visitor, I can interact with the contact page', () => {
       submitButton.focus();
       expect(submitButton).toHaveFocus();
     });
+
+    test('When I view the contact form, I can see and access the privacy policy link', () => {
+      const privacyPolicyLink = screen.getByRole('link', {
+        name: /privacy policy/i,
+      });
+      const privacyPolicyContainer = screen.getByRole('contentinfo');
+
+      expect(privacyPolicyLink).toBeInTheDocument();
+      expect(privacyPolicyLink).toHaveAttribute('href', '/privacy-policy');
+      expect(privacyPolicyLink).toHaveAttribute(
+        'aria-label',
+        'View our Privacy Policy',
+      );
+      expect(privacyPolicyLink).toHaveAttribute('title', 'Privacy Policy');
+      expect(privacyPolicyContainer).toBeInTheDocument();
+    });
   });
 
   describe('Contact Information', () => {
