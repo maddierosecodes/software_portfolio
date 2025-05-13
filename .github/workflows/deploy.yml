@@ -31,9 +31,7 @@ jobs:
         run: |
           vercel pull --yes \
             --environment=production \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --org-id=${{ secrets.VERCEL_ORG_ID }} \
-            --project-id=${{ secrets.VERCEL_PROJECT_ID }}
+            --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
         run: |
