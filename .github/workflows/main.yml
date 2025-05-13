@@ -18,11 +18,7 @@ jobs:
     needs: [security, quality]
     uses: ./.github/workflows/deploy.yml
     secrets:
-      CLOUDWAYS_SSH_KEY: ${{ secrets.CLOUDWAYS_SSH_KEY }}
-      CLOUDWAYS_SERVER_IP: ${{ secrets.CLOUDWAYS_SERVER_IP }}
-      CLOUDWAYS_USERNAME: ${{ secrets.CLOUDWAYS_USERNAME }}
-      CLOUDWAYS_APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
-      CLOUDWAYS_EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
-      CLOUDWAYS_API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
-      CLOUDWAYS_SERVER_ID: ${{ secrets.CLOUDWAYS_SERVER_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
