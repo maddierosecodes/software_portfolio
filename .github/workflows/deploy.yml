@@ -36,9 +36,7 @@ jobs:
       - name: Build Project Artifacts
         run: |
           vercel build --prod \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --org-id=${{ secrets.VERCEL_ORG_ID }} \
-            --project-id=${{ secrets.VERCEL_PROJECT_ID }}
+            --token=${{ secrets.VERCEL_TOKEN }}
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
 
