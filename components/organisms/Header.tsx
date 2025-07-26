@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import NavBar from '../molecules/NavBar';
 import HeaderLayout from '../layouts/HeaderLayout';
-import { routes, getCurrentPageTitle } from '../../config/routes';
+import { navigationRoutes, getCurrentPageTitle } from '../../config/routes';
 
 function Header() {
   const currentPage = usePathname();
@@ -25,7 +25,7 @@ function Header() {
         {getCurrentPageTitle(currentPage)}
       </p>
 
-      <NavBar items={routes} />
+      <NavBar items={navigationRoutes} />
     </HeaderLayout>
   );
 }

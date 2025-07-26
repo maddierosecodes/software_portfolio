@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.4] - 2024-12-19
+
+### Changed
+
+- Temporarily removed Blog and Games pages from navigation menu.
+- Updated navigation to only show available pages: Home, About Me, My Projects, and Contact Me.
+- Updated tests to reflect navigation changes.
+
+### Technical
+
+- Created separate `navigationRoutes` array in routes configuration to filter out coming soon pages.
+- Updated Header component to use filtered navigation routes.
+- Enhanced test coverage for navigation visibility.
+
 ## [0.6.3] - 2024-07-25
 
 ### Added

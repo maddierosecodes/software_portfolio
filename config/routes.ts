@@ -33,6 +33,11 @@ export const routes: Route[] = [
   },
 ];
 
+// Navigation routes excluding coming soon pages
+export const navigationRoutes: Route[] = routes.filter(
+  (route) => route.path !== '/blog' && route.path !== '/games',
+);
+
 export const getRouteByPath = (path: string): Route | undefined => {
   return routes.find(
     (route) => route.path.toLowerCase() === path.toLowerCase(),

@@ -45,4 +45,33 @@ describe('As a visitor, I can see the site header with navigation', () => {
       expect(item).toHaveFocus();
     }
   });
+
+  test('Blog and Games pages are not shown in navigation', () => {
+    // Check that blog and games links are not present in navigation
+    const blogLink = screen.queryByRole('link', { name: /blog/i });
+    const gamesLink = screen.queryByRole('link', { name: /games/i });
+
+    expect(blogLink).not.toBeInTheDocument();
+    expect(gamesLink).not.toBeInTheDocument();
+  });
+
+  test('Navigation contains expected available pages', () => {
+    // Check that the available navigation items are present
+    const allLinks = screen.getAllByRole('link');
+    const linkTexts = allLinks.map((link) => link.textContent);
+
+    // Should contain these navigation items (may appear twice due to desktop/mobile)
+    expect(linkTexts.filter((text) => text === 'Home').length).toBeGreaterThan(
+      0,
+    );
+    expect(
+      linkTexts.filter((text) => text === 'About Me').length,
+    ).toBeGreaterThan(0);
+    expect(
+      linkTexts.filter((text) => text === 'My Projects').length,
+    ).toBeGreaterThan(0);
+    expect(
+      linkTexts.filter((text) => text === 'Contact Me').length,
+    ).toBeGreaterThan(0);
+  });
 });
