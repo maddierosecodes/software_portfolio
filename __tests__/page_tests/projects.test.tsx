@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { usePathname } from 'next/navigation';
 import Projects from '@/app/projects/page';
 import { projectsPageSchema } from '@/config/structuredData';
@@ -43,8 +43,11 @@ describe('As a visitor, I can view the projects page with a list of portfolio pr
     });
 
     test('When I open the projects page, I see the project description', () => {
+      const projectArticle = screen.getByRole('article', {
+        name: `Project: ${portfolioProject.title}`,
+      });
       expect(
-        screen.getByText(portfolioProject.description),
+        within(projectArticle).getByText(portfolioProject.description),
       ).toBeInTheDocument();
     });
 
