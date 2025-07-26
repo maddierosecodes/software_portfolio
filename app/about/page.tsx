@@ -42,9 +42,10 @@ export default function AboutPage() {
               'Full Stack Development',
               'Web Accessibility',
               'Custom Web Applications',
+              'Mobile App Development',
+              'Java Development',
+              'Flutter Development',
               'Tech Consultancy',
-              'CMS Development',
-              'E-Commerce Development',
             ],
           }),
         }}

@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { usePathname } from 'next/navigation';
 import Projects from '@/app/projects/page';
 import { projectsPageSchema } from '@/config/structuredData';
+import { portfolioProject } from '@/config/projectsData';
 import mockRouter from 'next-router-mock';
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
@@ -38,33 +39,25 @@ describe('As a visitor, I can view the projects page with a list of portfolio pr
 
   describe('Project List Section', () => {
     test('When I open the projects page, I see the project title', () => {
-      expect(screen.getByText('Maddie Rose Codes')).toBeInTheDocument();
+      expect(screen.getByText(portfolioProject.title)).toBeInTheDocument();
     });
 
     test('When I open the projects page, I see the project description', () => {
       expect(
-        screen.getByText(
-          'My personal website, built with Next.js, Tailwind CSS, and TypeScript.',
-        ),
+        screen.getByText(portfolioProject.description),
       ).toBeInTheDocument();
     });
 
     test('When I open the projects page, I see the project links', () => {
       const liveProjectLink = screen.getByRole('link', {
-        name: 'Visit live Maddie Rose Codes project',
+        name: `Visit live ${portfolioProject.title} project`,
       });
       const githubLink = screen.getByRole('link', {
-        name: 'View Maddie Rose Codes GitHub repository',
+        name: `View ${portfolioProject.title} GitHub repository`,
       });
 
-      expect(liveProjectLink).toHaveAttribute(
-        'href',
-        'https://maddierosecodes.com',
-      );
-      expect(githubLink).toHaveAttribute(
-        'href',
-        'https://github.com/maddierosecodes/software_portfolio',
-      );
+      expect(liveProjectLink).toHaveAttribute('href', portfolioProject.link);
+      expect(githubLink).toHaveAttribute('href', portfolioProject.githubLink);
     });
   });
 

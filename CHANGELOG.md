@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.3] - 2024-07-25
+
+### Added
+
+- New services for Mobile App Development, including Flutter and Java.
+- Updated tech stack to reflect new skills and focus.
+
+### Changed
+
+- Refactored project data into a centralised configuration for easier management.
+- Updated project components to consume data from the new centralised source.
+- Reorganised the display of technology icons to prioritise core skills.
+
+### Removed
+
+- Removed CMS and E-Commerce development from the list of services.
+
 ## [0.6.2] - 2024-04-11
 
 ### Added

@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import Home from '../../app/page';
 import { usePathname, useRouter } from 'next/navigation';
 import mockRouter from 'next-router-mock';
+import { featuredProject } from '@/config/projectsData';
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
@@ -67,30 +68,23 @@ describe('As a visitor, I can see the latest project section', () => {
   });
 
   test('I can see the project title', () => {
-    expect(screen.getByText('Maddie Rose Codes')).toBeInTheDocument();
+    expect(screen.getByText(featuredProject.title)).toBeInTheDocument();
   });
 
   test('I can see the project description', () => {
-    expect(
-      screen.getByText(
-        'My personal website, built with Next.js, Tailwind CSS, and TypeScript.',
-      ),
-    ).toBeInTheDocument();
+    expect(screen.getByText(featuredProject.description)).toBeInTheDocument();
   });
 
   test('I can see the project links', () => {
     expect(
       screen.getByRole('link', {
-        name: 'Visit live Maddie Rose Codes project',
+        name: `Visit live ${featuredProject.title} project`,
       }),
-    ).toHaveAttribute('href', 'https://maddierosecodes.com');
+    ).toHaveAttribute('href', featuredProject.link);
     expect(
       screen.getByRole('link', {
-        name: 'View Maddie Rose Codes GitHub repository',
+        name: `View ${featuredProject.title} GitHub repository`,
       }),
-    ).toHaveAttribute(
-      'href',
-      'https://github.com/maddierosecodes/software_portfolio',
-    );
+    ).toHaveAttribute('href', featuredProject.githubLink);
   });
 });

@@ -4,7 +4,7 @@ import {
   Globe,
   Lightbulb,
   Accessibility,
-  ShoppingCart,
+  Smartphone,
   Code2,
 } from 'lucide-react';
 import ServiceIcon from '../atoms/ServiceIcon';
@@ -26,6 +26,12 @@ export default function Services() {
           icon: <ServiceIcon Icon={Globe} />,
         },
         {
+          title: 'Mobile App Development',
+          description:
+            'Cross-platform mobile applications built with Flutter and native performance.',
+          icon: <ServiceIcon Icon={Smartphone} />,
+        },
+        {
           title: 'Tech Consultancy',
           description:
             'Strategic planning, technical scoping, and architecture advice tailored to you.',
@@ -36,12 +42,6 @@ export default function Services() {
           description:
             'Web experiences built with inclusivity and semantic best practices in mind.',
           icon: <ServiceIcon Icon={Accessibility} />,
-        },
-        {
-          title: 'CMS & E-Commerce Builds',
-          description:
-            'Powerful WordPress, Shopify or headless solutions that grow with your brand.',
-          icon: <ServiceIcon Icon={ShoppingCart} />,
         },
         {
           title: 'Code Review & Refactor',

@@ -3,28 +3,27 @@ import TechIcon from '../atoms/TechIcon';
 
 const TechIconsGrid: React.FC = () => {
   const techIcons = [
-    // Frontend Core
-    { iconPath: '/resources/tech-logos/html-5.svg', name: 'HTML' },
-    { iconPath: '/resources/tech-logos/css-3.svg', name: 'CSS' },
+    // Core Programming Languages (Top Priority)
+    { iconPath: '/resources/tech-logos/java.svg', name: 'Java' },
+    { iconPath: '/resources/tech-logos/python.svg', name: 'Python' },
     { iconPath: '/resources/tech-logos/javascript.svg', name: 'JavaScript' },
     {
       iconPath: '/resources/tech-logos/typescript-icon.svg',
       name: 'TypeScript',
     },
-    // Frontend Frameworks
+    // Frontend Technologies
+    { iconPath: '/resources/tech-logos/html-5.svg', name: 'HTML' },
+    { iconPath: '/resources/tech-logos/css-3.svg', name: 'CSS' },
     { iconPath: '/resources/tech-logos/react.svg', name: 'React' },
     { iconPath: '/resources/tech-logos/nextjs-icon.svg', name: 'Next.js' },
     {
       iconPath: '/resources/tech-logos/tailwindcss-icon.svg',
       name: 'Tailwind',
     },
-    // Backend & Core Languages
-    { iconPath: '/resources/tech-logos/python.svg', name: 'Python' },
-    { iconPath: '/resources/tech-logos/java.svg', name: 'Java' },
+    // Backend & Mobile Development
     { iconPath: '/resources/tech-logos/nodejs.svg', name: 'Node.js' },
-    // CMS & E-commerce
-    { iconPath: '/resources/tech-logos/wordpress-icon.svg', name: 'WordPress' },
-    { iconPath: '/resources/tech-logos/shopify.svg', name: 'Shopify' },
+    { iconPath: '/resources/tech-logos/flutter.svg', name: 'Flutter' },
+    { iconPath: '/resources/tech-logos/aws.svg', name: 'AWS' },
   ];
 
   return (
