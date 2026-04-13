@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.5] - 2026-04-13
+
+### Added
+
+- Cloudflare Turnstile CAPTCHA integration on the contact form for bot protection.
+- Server-side CAPTCHA token verification in the contact API route before any email is sent.
+
+### Changed
+
+- Consolidated contact form API from two separate fetch calls into a single verified request.
+- Submit button is now disabled until CAPTCHA challenge is successfully completed.
+- Contact API route now accepts structured form data directly rather than raw email parameters.
+
+### Security
+
+- Upgraded Next.js from 15.2.4 to 15.5.15 to address multiple CVEs (SSRF, RCE, cache confusion, DoS).
+- Updated lodash, minimatch, flatted, picomatch, ajv, brace-expansion, js-yaml, and diff to patched versions.
+
+### Technical
+
+- Removed redundant GitHub Actions deploy workflow in favour of Vercel native Git integration.
+
 ## [0.6.4] - 2024-12-19
 
 ### Changed

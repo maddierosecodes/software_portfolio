@@ -1,14 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import FormField from '../molecules/FormField';
 import FormSection from '../molecules/FormSection';
 import SuccessMessage from '../molecules/SuccessMessage';
 import FormButton from '../atoms/FormButton';
-import { AdminError, ClientError } from '@/config/errors/emailErrors';
+import { AdminError } from '@/config/errors/emailErrors';
 import Link from 'next/link';
 
 export const ContactForm = () => {
+  const turnstileRef = useRef<TurnstileInstance>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+
   const [formState, setFormState] = useState<{
     formData: {
       name: string;
@@ -22,7 +26,7 @@ export const ContactForm = () => {
     };
     isSubmitted: boolean;
     isSubmitting: boolean;
-    error: AdminError | ClientError | null;
+    error: AdminError | null;
   }>({
     formData: {
       name: '',
@@ -86,46 +90,16 @@ export const ContactForm = () => {
 
       try {
         const { name, email, message } = formState.formData;
-        const contactEmailResponse = await fetch('/api/contact', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          body: JSON.stringify({
-            to: ['hello@maddierosecodes.com'],
-            subject: `New Contact Form Submission from ${name}`,
-            templateName: 'admin-contact',
-            replacements: {
-              name,
-              email,
-              message: message.replace(/\n/g, '<br>'),
-            },
-          }),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message, turnstileToken }),
         });
 
-        const contactEmailData = await contactEmailResponse.json();
+        const data = await response.json();
 
-        if (!contactEmailData.success) {
-          throw new AdminError(
-            contactEmailData.error || 'Failed to send message',
-          );
-        }
-
-        const clientEmailResponse = await fetch('/api/contact', {
-          method: 'POST',
-          body: JSON.stringify({
-            to: [email],
-            subject: 'Thank you for your message!',
-            templateName: 'client-contact',
-            replacements: {
-              name,
-            },
-          }),
-        });
-
-        const clientEmailData = await clientEmailResponse.json();
-
-        if (!clientEmailData.success) {
-          throw new ClientError(
-            clientEmailData.error || 'Failed to send message',
-          );
+        if (!data.success) {
+          throw new AdminError(data.error || 'Failed to send message');
         }
 
         setFormState((prev) => ({
@@ -135,13 +109,12 @@ export const ContactForm = () => {
         }));
       } catch (error) {
         console.error('Error submitting form:', error);
+        turnstileRef.current?.reset();
+        setTurnstileToken(null);
         setFormState((prev) => ({
           ...prev,
           isSubmitting: false,
-          error:
-            error instanceof AdminError || error instanceof ClientError
-              ? error
-              : null,
+          error: error instanceof AdminError ? error : null,
         }));
       }
     }
@@ -236,9 +209,17 @@ export const ContactForm = () => {
             itemProp="message"
           />
 
+          <Turnstile
+            ref={turnstileRef}
+            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            onSuccess={setTurnstileToken}
+            onError={() => setTurnstileToken(null)}
+            onExpire={() => setTurnstileToken(null)}
+          />
+
           <FormButton
             text={formState.isSubmitting ? 'Sending...' : 'Submit'}
-            disabled={formState.isSubmitting}
+            disabled={formState.isSubmitting || !turnstileToken}
             aria-busy={formState.isSubmitting}
           />
 
