@@ -118,8 +118,7 @@ describe('As a visitor, I can interact with the contact page', () => {
         ).toBeInTheDocument();
       });
 
-      // Verify that the API was called twice (once for admin, once for client)
-      expect(global.fetch).toHaveBeenCalledTimes(2);
+      expect(global.fetch).toHaveBeenCalledTimes(1);
     });
 
     test('When the API returns an error, I see an error message', async () => {
