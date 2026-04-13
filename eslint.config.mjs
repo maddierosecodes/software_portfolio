@@ -18,6 +18,7 @@ const config = [
       '**/dist/**',
       '**/coverage/**',
       '**/public/**',
+      'next-env.d.ts',
     ],
   },
   ...compat.extends(

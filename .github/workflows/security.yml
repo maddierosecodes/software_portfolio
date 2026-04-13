@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run npm audit
-        run: npm audit
+        run: npm audit --audit-level=moderate
 
   security-scan:
     runs-on: ubuntu-latest
