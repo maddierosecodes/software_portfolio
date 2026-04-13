@@ -1,13 +1,9 @@
-'use client';
-
 import Hero from '../molecules/Hero';
 import ThreeLayerTitleText from '../atoms/ThreeLayerTitleText';
-import CallToActionButton from '../atoms/CallToActionButton';
+import LinkCallToActionButton from '../atoms/LinkCallToActionButton';
 import profilePic from '../../public/resources/images/profile.png';
-import { useRouter } from 'next/navigation';
 
 export default function HomeHero() {
-  const router = useRouter();
   return (
     <div className="max-w-[1920px] mx-auto px-4 sm:px-8 xl:px-16">
       <Hero
@@ -24,9 +20,9 @@ export default function HomeHero() {
             mainText="Maddie"
             bottomText="a Freelance Web & Software Dev"
           />
-          <CallToActionButton
+          <LinkCallToActionButton
             text="View My Projects"
-            onClick={() => router.push('/projects')}
+            href="/projects"
             ariaLabel="View Maddie's portfolio projects"
           />
         </div>
