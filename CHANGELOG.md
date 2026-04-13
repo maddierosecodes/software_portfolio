@@ -5,29 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.6] - 2026-04-13
-
-### Security
-
-- Upgraded Next.js from 15.5.15 to 16.2.3 to address high severity resource throttling CVE (SNYK-JS-NEXT-15105315).
-
-## [0.6.5] - 2026-04-13
+## [1.0.0] - 2026-04-13
 
 ### Added
 
 - Cloudflare Turnstile CAPTCHA integration on the contact form for bot protection.
 - Server-side CAPTCHA token verification in the contact API route before any email is sent.
+- New `LinkCallToActionButton` atom using Next.js `Link` for semantic, accessible navigation — replaces the previous pattern of using a `<button>` with `useRouter` for page navigation.
 
 ### Changed
 
 - Consolidated contact form API from two separate fetch calls into a single verified request.
 - Submit button is now disabled until CAPTCHA challenge is successfully completed.
 - Contact API route now accepts structured form data directly rather than raw email parameters.
+- Converted `HomeHero` from a client component to a server component by extracting navigation into `LinkCallToActionButton`, allowing Next.js to inject a `<link rel="preload">` for the hero image at server render time and eliminating the image pop-in on page load.
+- Added blur placeholder to `FramedImage` for static image sources — Next.js generates a base64 preview at build time, filling the image space instantly while the full image loads.
+
+### Performance
+
+- Hero image on the home page now begins fetching before any JavaScript runs, removing the late image render caused by client-side hydration.
+- Perceived load time improved across all pages using `FramedImage` via the blur-up placeholder technique.
+- Image format priority set to AVIF-first with WebP fallback, and 1-year immutable cache headers added for all image assets.
 
 ### Security
 
-- Upgraded Next.js from 15.2.4 to 15.5.15 to address multiple CVEs (SSRF, RCE, cache confusion, DoS).
+- Upgraded Next.js from 15.2.4 to 16.2.3 to address multiple CVEs (SSRF, RCE, cache confusion, DoS) and a high severity resource throttling CVE (SNYK-JS-NEXT-15105315).
 - Updated lodash, minimatch, flatted, picomatch, ajv, brace-expansion, js-yaml, and diff to patched versions.
+- Set npm audit CI threshold to moderate to catch medium and above severity vulnerabilities.
+
+### Fixed
+
+- Mocked `@marsidev/react-turnstile` in the test suite and updated contact page fetch call count assertion to reflect the consolidated single API call.
+- Ignored `next-env.d.ts` in ESLint configuration to prevent false lint errors on the auto-generated Next.js type file.
 
 ### Technical
 

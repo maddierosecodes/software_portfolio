@@ -7,7 +7,6 @@ import {
   Linkedin,
   FileText,
   ExternalLink,
-  ShoppingBag,
   Briefcase,
   Globe,
   Star,
@@ -47,11 +46,6 @@ export default function ContactInfo() {
       href: 'https://www.linkedin.com/in/maddierosejane',
       icon: Linkedin,
       text: 'LinkedIn',
-    },
-    {
-      href: 'https://www.etsy.com/shop/maddierosecreates',
-      icon: ShoppingBag,
-      text: 'Etsy',
     },
     {
       href: 'https://www.instagram.com/maddierosecodes',
